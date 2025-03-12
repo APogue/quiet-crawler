@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 
 base_url = 'https://chancellor.ucla.edu/messages/page/'
-keywords = ['jewish', 'antisemitic', 'antisemitism', 'israel']
+keywords = ['muslim', 'islam', 'arab']
 matched_statements = []
 
 for page in range(1, 6):  # testing first 5 pages; adjust range as needed
@@ -23,15 +23,12 @@ for page in range(1, 6):  # testing first 5 pages; adjust range as needed
         print(f"Checking {url} ...")
         res_statement = requests.get(url)
         statement_soup = BeautifulSoup(res_statement.text, 'html.parser')
-        content = statement_soup.get_text().lower()
-
+        content = statement_soup.get_text().lower()  # case-insensitive matching
         if any(kw in content for kw in keywords):
             matched_statements.append(url)
 
-# Write matching URLs to a file, overwriting any previous file
-with open('matched_statements.txt', 'w') as f:
+with open('matched_muslim_statements.txt', 'w') as f:
     for url in matched_statements:
         f.write(url + "\n")
 
-print("Matching URLs have been saved to matched_statements.txt")
-
+print("Matching URLs saved to matched_muslim_statements.txt")
