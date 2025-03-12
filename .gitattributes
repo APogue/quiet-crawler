@@ -1,0 +1,7 @@
+# Automatically normalize line endings for all text files
+* text=auto
+
+# Force LF for common text file types
+*.py text eol=lf
+*.txt text eol=lf
+*.md text eol=lf
