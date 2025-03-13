@@ -10,6 +10,13 @@ from selenium.webdriver.support import expected_conditions as EC
 from bs4 import BeautifulSoup
 import requests
 
+# code output indicates it finds all "relevant" URL's before scraping, what if the window of iterest is years long? Doesn't it still need to scroll? How will it pre-assess how many URL's of iterest there are? 
+# my point is, if more scrolling is required to count the URL's of interest once the end date is reached, then either eliminate the pre-count entirely or manage the scrolling speed for the count 
+# if the window of interest is longer than say, two months. 
+
+
+
+
 # Regex pattern to match date in URLs
 date_pattern = r'/([0-9]{4})/([0-9]{2})/([0-9]{2})(?:/|-)'
 
