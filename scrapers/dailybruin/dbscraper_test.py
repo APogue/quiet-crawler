@@ -33,11 +33,10 @@ user_agents = [
 def main():
     # Configuration
     url = 'https://dailybruin.com/category/news'
-    keywords = ['measure', 'transfer']
-    
-    # Set your target date range here
-    start_date = datetime(2024, 7, 27)
-    end_date = datetime(2024, 8, 27)
+    keywords = ['marajuana', 'key', 'representative']  # adjust keywords as needed
+    # Target date range
+    start_date = datetime(2022, 11, 4)
+    end_date = datetime(2022, 11, 16)
     
     # Adjust this based on how far back you need to go
     max_scroll_attempts = 200
