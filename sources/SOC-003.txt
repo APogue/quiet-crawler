@@ -1,0 +1,63 @@
+Overall layout
+The image shows a desktop-browser view of an Instagram Reel. The screen is split vertically:
+
+Left half: A paused vertical video (Reel) featuring the same pig effigy seen earlier.
+
+Right half: The Instagram sidebar with the Reel’s creator, caption, user comments, like count, and date.
+
+1. Video panel (left side)
+Story header bar (top-left corner of the video frame):
+- Circular avatar with a red-orange gradient ring (story indicator).
+- Username “sjpatucla” followed by “21 h” (indicating the clip was posted 21 hours ago).
+- A thin progress bar stretches across the top edge.
+
+Video still:
+- Bright daytime shot of the pig effigy standing in front of tall glass doors labelled SOUTH EAST ENTRY on a modern campus building.
+- Pig head, money-bag arm (left), and out-stretched right arm are clearly visible.
+- The circular sign above the head now reads, in full, “TIME IS RUNNING OUT” with two thick black arrows crossing like clock hands.
+
+On-screen text overlay (center-bottom of video):
+- Large serif font in metallic silver: “ANTIZIONISM = ANTISEMITISM” (all caps, with a thin black shadow).
+
+Super-imposed comment card (directly beneath that text):
+- Black rounded-rectangle resembling an Instagram comment pop-up.
+- Username: Jeanne (white text).
+- Comment text:
+  Antizionism isn’t Antisemitism! They need to stop conflating the two. I hate Zionists but have no issues with Jews
+- Tiny grey footer shows “11 m Reply” plus a heart outline icon.
+
+Mute button (bottom-right corner of the video): Small speaker icon with a diagonal slash.
+
+2. Sidebar panel (right side)
+Top bar:
+- Text “danielleyablonka and 2 others” (white) indicating shared audio or collaboration.
+- Ellipsis icon (three horizontal dots) on the far right.
+
+Label just below: “Original audio” (grey, italic).
+
+Main caption block:
+- Creator avatar: Black-and-white profile photo.
+- Username (bold white): danielleyablonka followed by a small blue verification tick.
+- Timestamp: “62 w” (62 weeks ago).
+- Caption text (white, line-wrapped):
+  TODAY at UCLA, Students for Justice in Palestine set up a sculpture depicting Jews [correction, ZIONISTS] as money hungry pigs. Ancient antisemitism. At this point, they don’t even try to hide it… will there be any repercussions?!?
+  @ucla
+  #PROTECTYOURJEWISHSTUDENTS
+
+First visible comment:
+- Username: unodtarry (white) 57 w
+- Comment: They all pity themselves, but lack empathy for others, especially those of a different race.
+- A heart-outline “like” button sits to the right of the comment.
+
+Second visible comment (truncated mid-paragraph):
+- Username: yoreyouare 60 w
+- Text starts: THAT’S REALLY SIMILAR TO PEOPLE LIKE YOU, LIKE KILLING PEOPLE BY CREATING FAKE NEWS IN RETURN… (remaining text hidden below scroll).
+
+Action bar (bottom of sidebar):
+- Heart (like), speech bubble (comment), paper-airplane (share), and ribbon (save) icons.
+
+Like count: “3,120 likes” (blue).
+
+Date stamp: “March 21, 2024” (grey).
+
+Add-comment field: Grey text “Add a comment…” with a small grinning face emoji on the right.
