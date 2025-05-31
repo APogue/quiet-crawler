@@ -11,33 +11,38 @@ This repository supports the Claude API-based incident analysis workflow. It inc
 .
 quiet-crawler/
 │
-├── sources/ # Final cleaned source text files, one per document
+├── sources/ # Final cleaned source text files, source numbering is independent from incident numbering
 │   ├── ADM-001.txt
-│   ├── DB-001.txt
-│   ├── SOC-001.txt
+│   ├── DB-001.txt  # DB sources are a subset (by incident criteria) of raw outputs
+│   ├── SOC-001.txt # Each SOC holds one reddit/IG/Twitter post 
 │
-├── _data/ # Manually curated YAML data files
+├── _data/ # Manually curated markdown and YAML data files
 │   ├── codebook.md
 │   ├── codebook_w_coding_proto_v2.md
 │   ├── source_master.yml
 │   ├── field_definitions.yml
 │
-├── scraper_outputs/ # Raw outputs from the web scraper
+├── scraper_inputs/
+│   ├── daily_bruin/
+│   │   ├── universal_keywords.txt
+│   │   └── universal_incident_rule.md
+│   └── reddit/
+│       ├── INC-001-reddit-urls.json
+│       ├── INC-001-reddit-urls.json
+│
+├── scraper_outputs/ # Raw outputs from the web scraper 
 │   ├── raw_text/
-│   │   ├── scrape-001.txt
-│   │   ├── scrape-002.txt
-│   │   ├── scrape-003.txt
+│   │   ├── DB-raw-001.txt
+│   │   ├── INC-001_reddit-raw-001.txt # Flattened but still multiple posts in one file
 │   ├── json/
-│   │   ├── results-001.json
-│   │   ├── results-002.json
-│   │   ├── reddit-001.json
+│   │   ├── DB-raw-001.json
+│   │   ├── INC-001_reddit_scaped.json # Dicts with metadata and comments
 │
 ├── scrapers/ # Web scraping code modules
 │   ├── init.py
 │   ├── scraper_base.py
 │   ├── reddit_scraper.py  
 │   ├── daily_bruin_scraper.py
-│   ├── social_media_scraper.py
 │
 ├── utils/ # Helper Python scripts
 │   ├── source_reader.py
