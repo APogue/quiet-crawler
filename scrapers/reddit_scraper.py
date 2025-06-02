@@ -56,7 +56,69 @@ def reddit_scrape(input_file, output_dir):
                 "created_utc": submission.created_utc,
                 "num_comments": submission.num_comments,
                 "selftext": submission.selftext,
+                "comments": []
             }
+
+            # Apply filtering criteria
+            if submission.score <= 300 or submission.num_comments <= 200:
+                logging.info(f"Skipping post {url} - score or comment count too low.")
+                continue
+
+            # Grab only the top 1 top-level comment by score (level 1)
+            top_level_comments = sorted(
+                submission.comments,
+                key=lambda c: c.score,
+                reverse=True
+            )[:1]
+    
+            for top_comment in top_level_comments:
+                top_comment_data = {
+                    "comment_id": top_comment.id,
+                    "body": top_comment.body,
+                    "author": str(top_comment.author),
+                    "score": top_comment.score,
+                    "created_utc": top_comment.created_utc,
+                    "replies": []
+                }
+    
+                # Grab only 1 reply to the top-level comment (level 2)
+                level_2_replies = sorted(
+                    top_comment.replies,
+                    key=lambda c: c.score,
+                    reverse=True
+                )[:1]
+    
+                for level_2_comment in level_2_replies:
+                    level_2_comment_data = {
+                        "comment_id": level_2_comment.id,
+                        "body": level_2_comment.body,
+                        "author": str(level_2_comment.author),
+                        "score": level_2_comment.score,
+                        "created_utc": level_2_comment.created_utc,
+                        "replies": []
+                    }
+    
+                    # Grab only 1 reply to the level 2 comment (level 3)
+                    level_3_replies = sorted(
+                        level_2_comment.replies,
+                        key=lambda c: c.score,
+                        reverse=True
+                    )[:1]
+    
+                    for level_3_comment in level_3_replies:
+                        level_3_comment_data = {
+                            "comment_id": level_3_comment.id,
+                            "body": level_3_comment.body,
+                            "author": str(level_3_comment.author),
+                            "score": level_3_comment.score,
+                            "created_utc": level_3_comment.created_utc
+                        }
+                        level_2_comment_data["replies"].append(level_3_comment_data)
+    
+                    top_comment_data["replies"].append(level_2_comment_data)
+    
+                submission_data["comments"].append(top_comment_data)
+            
             results.append(submission_data)
             logging.info(f"Scraped: {url}")
 

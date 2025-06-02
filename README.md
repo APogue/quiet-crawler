@@ -36,10 +36,10 @@ quiet-crawler/
 ├── scraper_outputs/ # Raw outputs from the web scraper 
 │   ├── raw_text/
 │   │   ├── DB-raw-001.txt
-│   │   ├── INC-001_reddit-raw-001.txt # Flattened but still multiple posts in one file
+│   │   ├── INC-001_reddit-scraped.txt # Flattened but still multiple posts in one file
 │   ├── json/
 │   │   ├── DB-raw-001.json
-│   │   ├── INC-001_reddit_scaped.json # Dicts with metadata and comments
+│   │   ├── INC-001_reddit_scraped.json # Dicts with metadata and comments
 │
 ├── scrapers/ # Web scraping code modules
 │   ├── init.py
@@ -48,8 +48,8 @@ quiet-crawler/
 │   ├── daily_bruin_scraper.py
 │
 ├── utils/ # Helper Python scripts
-│   ├── source_reader.py
-│   ├── json_to_txt_converter.py
+│   ├── source_reader.py # Load source files and metadata into Python memory
+│   ├── reddit_json_to_txt_converter.py # Flatten nested JSON reddit data into a plain text file
 │
 ├── api_tests/ # API test scripts for Claude integration
 │   └── test_claude.py
@@ -91,6 +91,38 @@ quiet-crawler/
 
 ---
 
+## Scraping criteria
+
+### Reddit
+```
+.
+📄 Post (submission)
+  ├── 💬 Top-Level Comment 1
+  │     ├── ↪️ Reply 1.1
+  │     │     ├── ↪️ Reply 1.1.1
+  │     │     └── ↪️ Reply 1.1.2
+  │     ├── ↪️ Reply 1.2
+  │     │     ├── ↪️ Reply 1.2.1
+  │     │     └── ↪️ Reply 1.2.2
+  │     ├── ↪️ Reply 1.3
+  │     │     ├── ↪️ Reply 1.3.1
+  │     │     └── ↪️ Reply 1.3.2
+  │     └── ↪️ Reply 1.4
+  │           ├── ↪️ Reply 1.4.1
+  │           └── ↪️ Reply 1.4.2
+  │
+  ├── 💬 Top-Level Comment 2
+  │     ├── ↪️ Reply 2.1
+  │     │     ├── ↪️ Reply 2.1.1
+  │     │     └── ↪️ Reply 2.1.2
+  │     └── ... (repeats similar structure as above)
+  │
+  └── 💬 Top-Level Comment 3-10
+        └── ... (same nested structure as above)
+
+```  
+---
+
 ## Workflow
 
 1. **Scrape Data** — Use the scrapers in `scrapers/` to collect raw data.
@@ -105,6 +137,6 @@ quiet-crawler/
 
 - Keep `sources/` clean and consistent—one file per source ID, always matching `source_master.yml`.
 - Keep `scraper_outputs/` intact as your raw record—don’t edit files there directly.
-- Regularly update `field_definitions.yml` and `source_master.yml` to stay aligned with your evolving coding protocols.
+- Regularly update `variable_data.yml` and `source_master.yml` to stay aligned with your evolving coding protocols.
 
 ---
