@@ -14,13 +14,16 @@ quiet-crawler/
 ├── sources/ # Final cleaned source text files, source numbering is independent from incident numbering
 │   ├── ADM-001.txt
 │   ├── DB-001.txt  # DB sources are a subset (by incident criteria) of raw outputs
-│   ├── SOC-001.txt # Each SOC holds one reddit/IG/Twitter post 
+│   ├── SOC-001.txt # Each SOC holds one reddit/IG/Twitter post (post-processed to txt)
+│   ├── images/
+│   │   ├── SOC-001.png # Pre-processed image source files 
 │
 ├── _data/ # Manually curated markdown and YAML data files
-│   ├── codebook.md
-│   ├── codebook_w_coding_proto_v2.md
-│   ├── source_master.yml
-│   ├── field_definitions.yml
+│   ├── codebook.md # Coding variables with definitions
+│   ├── codebook_w_coding_proto_v2.md Coding variables with Claude UI integrated Claude protocols 
+│   ├── source_master.yml # Master list of all sources used (coding, research, and writing)
+│   ├── variable_data.yml # List of coding variables w/metadata
+│   ├── incident_data.yml # Incident summaries, dates, inclusion rules, sources
 │
 ├── scraper_inputs/
 │   ├── daily_bruin/
