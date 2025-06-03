@@ -94,6 +94,9 @@ quiet-crawler/
 ## Scraping criteria
 
 ### Reddit
+
+It is a 10-5-5 model now, update. 
+
 ```
 .
 📄 Post (submission)

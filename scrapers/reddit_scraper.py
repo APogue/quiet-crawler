@@ -63,15 +63,22 @@ def reddit_scrape(input_file, output_dir):
             if submission.score <= 300 or submission.num_comments <= 200:
                 logging.info(f"Skipping post {url} - score or comment count too low.")
                 continue
+                
+            # Filter out removed/deleted replies first
+            filtered_comments = [
+                r for r in submission.comments
+                if r.body.strip().lower() not in ["[removed]", "[deleted]"]
+            ]
 
-            # Grab only the top 1 top-level comment by score (level 1)
+            # Grab only the top 10 top-level comment by score (level 1)
             top_level_comments = sorted(
-                submission.comments,
+                filtered_comments,
                 key=lambda c: c.score,
                 reverse=True
-            )[:1]
+            )[:10]
     
             for top_comment in top_level_comments:
+
                 top_comment_data = {
                     "comment_id": top_comment.id,
                     "body": top_comment.body,
@@ -80,15 +87,22 @@ def reddit_scrape(input_file, output_dir):
                     "created_utc": top_comment.created_utc,
                     "replies": []
                 }
-    
-                # Grab only 1 reply to the top-level comment (level 2)
+
+                # Filter out removed/deleted replies first
+                filtered_comment_replies = [
+                    r for r in top_comment.replies
+                    if r.body.strip().lower() not in ["[removed]", "[deleted]"]
+                ]
+
+                # Grab only 5 replies to the top-level comment (level 2)
                 level_2_replies = sorted(
-                    top_comment.replies,
+                    filtered_comment_replies,
                     key=lambda c: c.score,
                     reverse=True
-                )[:1]
+                )[:5]
     
                 for level_2_comment in level_2_replies:
+
                     level_2_comment_data = {
                         "comment_id": level_2_comment.id,
                         "body": level_2_comment.body,
@@ -97,15 +111,22 @@ def reddit_scrape(input_file, output_dir):
                         "created_utc": level_2_comment.created_utc,
                         "replies": []
                     }
-    
-                    # Grab only 1 reply to the level 2 comment (level 3)
+
+                    # Filter out removed/deleted replies first
+                    filtered_level_2_replies = [
+                        r for r in level_2_comment.replies
+                        if r.body.strip().lower() not in ["[removed]", "[deleted]"]
+                    ]
+
+                    # Grab only 5 replies to the level 2 comment (level 3)
                     level_3_replies = sorted(
-                        level_2_comment.replies,
+                        filtered_level_2_replies,
                         key=lambda c: c.score,
                         reverse=True
-                    )[:1]
+                    )[:5]
     
                     for level_3_comment in level_3_replies:
+
                         level_3_comment_data = {
                             "comment_id": level_3_comment.id,
                             "body": level_3_comment.body,
