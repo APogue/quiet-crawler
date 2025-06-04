@@ -55,13 +55,10 @@ quiet-crawler/
 │   └── test_claude.py
 │
 ├── outputs/ # Claude audit logs and YAML outputs per incident
-│   ├── INC-001/
-│   │   ├── audit-log.txt
-│   │   └── coded-output.yml
-│   ├── INC-002/
-│   │   ├── audit-log.txt
-│   │   └── coded-output.yml
-│   └── ...
+│   ├── audit_log/
+│   │   ├── INC-001-audit-log.txt
+│   ├── coded_output/
+│   │   └── INC-001-coded-output.yml
 │
 ├── main.py # Entry point for running the full incident analysis pipeline
 ├── README.md # Project overview and directory structure

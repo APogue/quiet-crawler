@@ -4,9 +4,7 @@
   title: "Op-ed: Antisemitic imagery at UC Regents meeting protest threatens campus discourse"
   file: sources/DB-001.txt
   url: "https://dailybruin.com/2024/04/02/op-ed-antisemitic-imagery-at-uc-regents-meeting-protest-threatens-campus-discourse"
-  used_in: 
-    incidents: [INC-001]
-    blog: 
+  used_in: [INC-001]
 
 - id: DB-002
   type: daily_bruin
@@ -14,10 +12,8 @@
   title: "Protesters sit in at Luskin Conference Center ahead of UC Regents vote on Item J1"
   file: sources/DB-002.txt
   url: "https://dailybruin.com/2024/03/20/protesters-sit-in-at-luskin-conference-center-ahead-of-uc-regents-vote-on-item-j1"
-  used_in: 
-    incidents: [INC-002, INC-003]
-    blog: 
-      
+  used_in: [INC-002, INC-003]
+
 - id: DB-003
   type: daily_bruin
   date: 2024-04-30
@@ -74,12 +70,11 @@
   url: "https://www.latimes.com/california/story/2024-03-21/uc-regents-dicuss-tightening-controls-of-opinion-on-campus-websites"
   used_in: [INC-002]
 
-
 - id: SOC-001
   type: X
   date: 2024-03-28
   title: "UCLA: A figure depicting Jews as pigs suggesting Jews “prioritize money over lives"
-  file: sources/SOC-001.png
+  file: sources/SOC-001.txt
   url: "https://x.com/IsraelWarRoom/status/1770747992418509214"
   used_in: [INC-001]
 
@@ -88,7 +83,7 @@
   date: 2024-03-28
   title: "ADL Los Angeles Regional Director @JeffreyAbrams addresses the most recent display of antisemitism at a 
   @UofCalifornia Regents meeting on the @UCLA campus"
-  file: sources/SOC-002.png
+  file: sources/SOC-002.txt
   url: "https://x.com/ADLCalifornia/status/1770899659206058371"
   used_in: [INC-001]
 
@@ -96,7 +91,7 @@
   type: IG
   date: 2024-03-21
   title: "TODAY at UCLA, Students for Justice in Palestine set up a sculpture depicting Jews [correction, ZIONISTS] as money hungry pigs."
-  file: sources/SOC-003.png
+  file: sources/SOC-003.txt
   url: "https://www.instagram.com/reel/C4yVx9crpDa/"
   used_in: [INC-001]
 
@@ -104,7 +99,7 @@
   type: reddit
   date: 2024-03-20
   title: "At UCLA today. This is why I'm scared of going to campus as an Israeli Jew."
-  file: sources/SOC-004.png
+  file: sources/SOC-004.txt
   url: "https://www.reddit.com/r/Jewish/comments/1bjq7c4/at_ucla_today_this_is_why_im_scared_of_going_to/"
   used_in: [INC-001]
 
@@ -116,14 +111,6 @@
   url: "https://www.instagram.com/p/C6aNkbWrBSR/?hl=en&img_index=2"
   used_in: [INC-004]
 
-- id: SOC-005-2
-  type: IG
-  date: 2024-04-30
-  title: "Zionists threaten our safety every night by verbally, physically..."
-  file: sources/SOC-005-2.png
-  url: "https://www.instagram.com/p/C6aNkbWrBSR/?hl=en&img_index=3"
-  used_in: [INC-004]
-
 - id: SOC-006
   type: IG
   date: 2024-04-16
@@ -132,19 +119,11 @@
   url: "https://www.instagram.com/p/C51p_t2SMCH/?hl=en"
   used_in: [INC-001, INC-002, INC-003]
 
-- id: SOC-006-2
-  type: IG
-  date: 2024-04-16
-  title: "During March 19-21, students and community from four..."
-  file: sources/SOC-006-2.png
-  url: "https://www.instagram.com/p/C51p_t2SMCH/?hl=en"
-  used_in: [INC-001]
-
 - id: SOC-007
   type: reddit
   date: 2024-03-23
   title: "UCLA Condemns “Ugly Antisemitic” Pig Display"
-  file: sources/SOC-007.png
+  file: sources/SOC-007.txt
   url: "https://www.reddit.com/r/ucla/comments/1blvyn6/ucla_condemns_ugly_antisemitic_pig_display/"
   used_in: [INC-001]
 
@@ -152,7 +131,7 @@
   type: reddit
   date: 2024-03-21
   title: "Did anyone report this?"
-  file: sources/SOC-008.png
+  file: sources/SOC-008.txt
   url: "https://www.reddit.com/r/ucla/comments/1bkomgw/did_anyone_report_this/"
   used_in: [INC-001]
 
@@ -163,25 +142,25 @@
   California"
   file: sources/POL-001.txt
   url: https://policy.ucop.edu/doc/3000127/NonAffiliateRegs
-  used_in: 
+  used_in: [INC-001]
 
 - id: POL-002
   type: regents
   date: 2024-01-01
   title: "Student Conduct Code"
   url: https://studentconduct.ucla.edu/individual-student-code
-  used_in: 
+  used_in: [INC-001]
 
 - id: POL-003
   type: regents
   date: 2024-08-29
   title: "Student Conduct Code"
   url: https://policy.ucop.edu/doc/1001004/Anti-Discrimination
-  used_in: 
+  used_in: [INC-001]
 
 - id: PHIL-001
   type: edi
   date: 2023-10-25
   title: "Free Speech on Campus: The Basics, The Myths, The Challenges"
   url: https://ucla.app.box.com/v/free-speech-on-campus
-  used_in: 
+  used_in: [INC-001]
