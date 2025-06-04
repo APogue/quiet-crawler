@@ -1,0 +1,62 @@
+Overall layout
+The image shows a desktop-browser view of an Instagram post. The screen is split vertically:
+
+Left-hand panel – paused video frame
+Subject: A large, handmade effigy occupies almost the entire left column.
+
+Head & expression: The head is a bright-pink papier-mâché pig with a wide, toothy grin, up-turned snout, arched eyebrows, and angry-looking eyes painted in black and white. Two stubby ears poke out of the top.
+
+Accessory above the head: Stuck behind the head is a white circular clock mounted on a stick. Only the lower edge and a couple of red capital letters of its message are visible inside this crop.
+
+Body & clothing: The figure wears an oversized navy-blue men’s blazer with a small red pocket square. Its stick-arms stretch outward at shoulder height as if gesturing. A heavy metal chain drapes around one shoulder. Figure appears to have a noose around its neck with the end of the twine/rope attached to the base platform, or maybe attached to a sign at the front of the base reading "REGENT" (the entire word is cropped in this video still).
+
+Lower section / symbolism: From the mannequin’s waist down, vivid red-orange tissue paper flames billow upward, suggesting the effigy is burning. Mixed into the “fire” are scattered newspaper articles, and a blue-and-white bucket bearing the Star of David. A cardboard placard on the front edge of the base shows part of a phrase with the visible part reading “REGENTS” in large red letters with black outline.
+
+Setting: The effigy stands on the outdoor concrete plaza in front of tall glass doors of a modern building. Reflections in the glass hint at sunny weather.
+
+Background figures: Off to the right, two individuals in casual clothes stand chatting. One wears a white T-shirt with a colorful back-print, black pants, and white sneakers. It also looks like the same individual is wearing a white scarf draped around their neck with black pattern, maybe a keffiyeh. Their faces are turned away from the camera.
+
+Video UI: A mute/speaker icon sits in the bottom-right corner of the video thumbnail.
+
+Right-hand panel – Instagram sidebar
+Header bar (black background):
+
+Red circular avatar with the letters “DIVEST” stacked in white far left.
+
+Bold username “ucladivest” followed by a blue “· Follow” link to the right.
+
+Grey text “Original audio” underneath. Three horizontal dots (options menu) appear at far right.
+
+Caption block (white text on black):
+
+Red circular avatar with the letters “DIVEST” stacked in white.
+
+Bold username “ucladivest” followed by a small timestamp “17w” (17 weeks prior to image capture) precedes the caption.
+
+Caption excerpt (first two paragraphs visible before the scroll bar cuts it off):
+
+“During March 19-21, students and community from four UC campuses carried out a 3 day sit-in to demand the UC Regents divest from war and the genocide of Palestinians.
+
+During these 3 days, UC Divest shut it down through various actions such as propping up Tent City, students camping out near Luskin Conference Center, making our presence inescapable to the Regents and showcasing a reminder of the disparate conditions many Palestinian refugees face due to ongoing genocide.”
+
+The third paragraph begins but the remainder lies below the fold:
+Although our sit-in was originally set to be in the Luskin Conference Center hotel lobby, peaceful protestors were...
+
+Engagement bar (white icons): Heart, speech bubble, paper-airplane, and bookmark icons appear in a row.
+
+Metrics & metadata:
+
+Bold blue link “139 likes”.
+
+Grey date stamp “April 16”.
+
+Comment field: A faint prompt “Add a comment…” with a smiling-face emoji is shown at the very bottom.
+
+A narrow grey scrollbar on the caption indicates more text is available below the visible portion.
+
+
+
+
+
+
+
