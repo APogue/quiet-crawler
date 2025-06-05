@@ -1,0 +1,76 @@
+Incident:
+A discrete, campus-affiliated event—documented in the Daily Bruin—that occurs within a specific timeframe and involves identity-based harm, protest-related activity, TPM violations, or campus safety failures. An incident must be clearly bounded in time and produce measurable community impact, administrative or police involvement, or a clear escalation of verbal conflict or physical disruption. It must be distinguishable from ongoing policy discourse or general campus climate issues.
+----------------------------------------------------------------------------------------------------------------------------
+Source Type Definitions:
+DB - Daily Bruin
+
+Definition: Official student newspaper of UCLA
+Role: Primary inclusion filter and neutral incident detection source
+Content: News articles, op-eds, investigative reporting on campus events
+Authority: Student-run independent journalism; campus paper of record
+Usage: Keyword searches identify incidents; articles provide initial incident framing and timeline
+
+ADM - Administrative Sources
+
+Definition: Official UCLA institutional communications and statements
+Includes:
+Chancellor messages and statements
+UCLA Newsroom releases
+Official university social media accounts
+Administrative emails and policy announcements
+
+Authority: Represents official institutional position and response
+Usage: Documents formal university stance, policy actions, and administrative interventions
+
+MED - External Media
+
+Definition: Non-UCLA journalistic sources and news outlets
+Includes:
+Regional newspapers (LA Times, etc.)
+National news outlets
+Specialty publications (Jewish Journal, etc.)
+Professional journalism sources
+
+Authority: External perspective and broader contextual coverage
+Usage: Provides outside verification, community impact assessment, and broader narrative context
+
+SOC - Social Media
+
+Definition: User-generated content on social media platforms
+Includes:
+Twitter/X posts
+Instagram posts and stories
+Reddit discussions
+TikTok videos
+
+Authority: Direct participant and community voices; real-time documentation
+Usage: Captures immediate reactions, participant perspectives, visual evidence, and community discourse
+
+POL - Policy Documents
+
+Definition: Official UC Regents and/or UCLA policies and regulations
+Includes:
+Student Conduct Code
+Time, place, and manner (TPM) policies
+Anti-discrimination policies
+Non-affiliate conduct regulations
+
+Authority: Legal/regulatory framework governing campus conduct
+Usage: Provides policy context for violations, procedures, and sanctions; establishes standards for evaluating incident compliance. 
+
+PHIL - Philosophical/Guidance Documents
+
+Definition: Educational materials and guidance documents on principles and values
+Includes:
+Free speech guidance documents
+Equity, Diversity & Inclusion educational materials
+Training documents and frameworks
+Best practices guidance
+Principled approaches to campus issues
+
+Authority: Institutional values and educational guidance 
+Usage: Provides context for institutional principles, educational approaches, and value frameworks that inform but don't mandate responses
+
+Key Distinction: POL sources establish standards for evaluating compliance, but whether an incident meets that standard is discretionary and must be weighed against UCLA's responsibility to the constitution as a state actor. PHIL sources are imperative in determining whether an incident rises to the level of a policy violation and must be considered in analysis. 
+
+----------------------------------------------------------------------------------------------------------------------------

@@ -51,10 +51,6 @@ def call_claude_api(prompt):
                             "data": prompt
                         },
                         "citations": {"enabled": True}
-                    },
-                    {
-                        "type": "text",
-                        "text": "Summarize this document with citations."
                     }
                 ]
             }
