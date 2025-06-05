@@ -78,4 +78,3 @@ def verify_source_ids_exist(source_ids):
 
 
 
-# Have it write what it outputs to a text file so you can check it

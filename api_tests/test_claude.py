@@ -1,5 +1,6 @@
 import os
 import time
+import tiktoken
 from dotenv import load_dotenv
 from anthropic import Anthropic
 from utils.source_reader import (
@@ -8,9 +9,23 @@ from utils.source_reader import (
     prepare_sources_for_prompt
 )
 
-incident_id = 'INC-001'
-source_ids = get_sources_for_incident(incident_id)
-source_text_block = prepare_sources_for_prompt(source_ids)
+# Determine project root based on the script's location
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+# Point to the existing 'api_tests' directory
+API_TESTS_DIR = os.path.join(BASE_DIR, 'api_tests')
+os.makedirs(API_TESTS_DIR, exist_ok=True)
+
+def log_prompt_to_file(prompt, incident_id, suffix="claude_api_prompt.txt"):
+    """
+    Logs the prompt to a file in the api_tests/ directory.
+    """
+    timestamp = time.strftime("%Y%m%d-%H%M%S")
+    filename = f"{incident_id}_{timestamp}_{suffix}"
+    file_path = os.path.join(API_TESTS_DIR, filename)
+    with open(file_path, 'w', encoding='utf-8') as f:
+        f.write(prompt)
+    print(f"✅ Prompt saved to {file_path}")
 
 
 # Placeholder: Function to call the Claude API (replace with real call)
@@ -56,11 +71,11 @@ def main():
     
     incident_id = 'INC-001'  # Example test incident ID
 
-    # Step 1. Get relevant source IDs
+    # Get relevant source IDs
     source_ids = get_sources_for_incident(incident_id)
     print(f"Sources for incident {incident_id}: {source_ids}")
 
-    # Step 2. Validate that sources exist in both filesystem and master metadata
+    # Validate that sources exist in both filesystem and master metadata
     missing_files, missing_metadata = verify_source_ids_exist(source_ids)
     if missing_files:
         print(f"⚠️ Missing source files: {missing_files}")
@@ -71,10 +86,10 @@ def main():
         return
 
 
-    # Step 3. Prepare the source text block for the prompt
+    # Prepare the source text block for the prompt
     source_text_block = prepare_sources_for_prompt(source_ids)
 
-    # Step 4. Build the prompt for Claude
+    # Build the prompt for Claude
     prompt = f"""
 
 # INCIDENT ID: {incident_id}
@@ -105,11 +120,18 @@ Your second task is to print the text of SOC-003 exactly as provided in the inpu
 You MUST NOT summarize or paraphrase. You MUST return the text exactly as provided between the markers. If the text is long, you MUST still print it fully.
 
 """
+    # Save the prompt before calling the API
+    log_prompt_to_file(prompt, incident_id, suffix="claude_api_prompt.txt")
 
-    # Step 5. Call the API (placeholder function)
+    # Count tokens, want to stay under 100k
+    encoding = tiktoken.get_encoding("cl100k_base")
+    tokens = encoding.encode(prompt)
+    print(f"Approximate token count: {len(tokens)}")
+    
+    # Call the API (placeholder function)
     api_response = call_claude_api(prompt)
 
-    # Step 6. Print or save the response
+    # Print or save the response
     print("\n=== API RESPONSE ===")
     print(api_response)
 

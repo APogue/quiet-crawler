@@ -16,7 +16,7 @@ if missing:
 script_dir = os.path.dirname(os.path.abspath(__file__))
 project_root = os.path.dirname(script_dir)
 reddit_metadata = os.path.join(project_root, 'scraper_inputs', 'reddit', 'INC-001-reddit-urls.json')
-json_scraper_dir = os.path.join(project_root, 'scraper_outputs', 'json')
+json_scraped_dir = os.path.join(project_root, 'scraper_outputs', 'json')
 
 
 # Setup, for more detail (e.g. inspect internal values), change level=logging.DEBUG
@@ -34,8 +34,8 @@ reddit = praw.Reddit(
     password=os.getenv("REDDIT_PASSWORD")
 )
 
-def load_json_file(filename):
-    with open(filename, 'r') as f:
+def load_json_file(input_file):
+    with open(input_file, 'r') as f:
         data = json.load(f)
     return data
 
@@ -165,4 +165,4 @@ def reddit_scrape(input_file, output_dir):
     logging.info(f"Saved Reddit data to {output_path}")
 
 if __name__ == "__main__":
-    reddit_scrape(reddit_metadata, json_scraper_dir)
+    reddit_scrape(reddit_metadata, json_scraped_dir)
