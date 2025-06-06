@@ -22,6 +22,8 @@ def get_sources_for_incident(incident_id):
     ]
     return source_ids
 
+# make another function that can pull the metadata from incident_data.yml, the sources and incident summary will be there
+
 def load_source_content(source_id):
     """Loads a single source file by its ID (e.g., 'DB-001')."""
     txt_path = os.path.join(SOURCES_DIR, f"{source_id}.txt")
@@ -42,6 +44,9 @@ def get_source_with_metadata(source_id):
     }
 
 def prepare_sources_for_prompt(source_ids):
+
+    # this might be obsolete if trying to use the citations function in the API
+
     """
     Assembles source texts (with inline IDs) for use in Claude prompts.
     Returns a single string with clear demarcation of source boundaries.
