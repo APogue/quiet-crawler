@@ -39,6 +39,7 @@ def call_claude_api(prompt):
     response = client.messages.create(
         model="claude-sonnet-4-20250514",
         max_tokens=1024,
+        # array (list) of message objects, each of which is a dict
         messages=[
             {
                 "role": "user",
@@ -85,7 +86,7 @@ def main():
     # Prepare the source text block for the prompt
     source_text_block = prepare_sources_for_prompt(source_ids)
 
-    # Build the prompt for Claude
+    # Build the prompt for Claude, this is a single string
     prompt = f"""
 
 # INCIDENT ID: {incident_id}
@@ -116,7 +117,7 @@ Your second task is to print the text of SOC-003 exactly as provided in the inpu
 You MUST NOT summarize or paraphrase. You MUST return the text exactly as provided between the markers. If the text is long, you MUST still print it fully.
 
 """
-    # Save the prompt before calling the API
+    # Save the prompt before calling the API, if prompt includes system message this needs to be changed
     log_prompt_to_file(prompt, incident_id, suffix="claude_api_prompt.txt")
 
     # Count tokens, want to stay under 100k
