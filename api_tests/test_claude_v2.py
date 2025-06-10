@@ -22,12 +22,18 @@ def log_system_and_content_to_file(system_content, user_content, incident_id, su
     
     with open(file_path, 'w', encoding='utf-8') as f:
         f.write("=== SYSTEM MESSAGE ===\n")
-        f.write(f"Number of system parts: {len(system_content)}\n")
         for i, part in enumerate(system_content):
-            f.write(f"Part {i+1}: {part.get('text', 'N/A')[:100]}...\n")
-        f.write("\n=== USER CONTENT ===\n")
-        f.write(f"Number of documents: {len([item for item in user_content if item.get('type') == 'document'])}\n")
-        f.write(f"Text instructions: {[item.get('text', 'N/A') for item in user_content if item.get('type') == 'text']}\n")
+            f.write(f"--- System Part {i+1} ---\n")
+            f.write(part.get('text', 'No text content') + "\n\n")
+        
+        f.write("=== USER CONTENT ===\n")
+        for i, item in enumerate(user_content):
+            if item.get('type') == 'document':
+                f.write(f"--- Document: {item.get('title', 'Unknown')} ---\n")
+                f.write(item['source']['data'] + "\n\n")
+            elif item.get('type') == 'text':
+                f.write(f"--- Text Instruction ---\n")
+                f.write(item.get('text', 'No text content') + "\n\n")
     
     print(f"✅ API call logged to {file_path}")
 
@@ -78,21 +84,9 @@ def main():
 
     # Your codebook content (placeholder - replace with actual content)
     codebook_content = """
-    PLACEHOLDER CODEBOOK CONTENT:
-    
-    SEVERITY_SCALE:
-    1 = Minor policy concern
-    2 = Moderate violation requiring response
-    3 = Serious incident with campus-wide impact
-    4 = Major crisis requiring immediate intervention
-    
-    ADMINISTRATIVE_RESPONSE_TIMING:
-    - immediate (within 24 hours)
-    - prompt (within 1 week)
-    - delayed (beyond 1 week)
-    - none (no documented response)
-    
-    [TODO: Replace with actual field_definitions.yml content]
+
+    PLACEHOLDER CODEBOOK CONTENT
+
     """
 
     # Build system message as list of content objects
@@ -104,10 +98,10 @@ def main():
         {
             "type": "text", 
             "text": codebook_content,
-            "cache_control": {
-                "type": "ephemeral",
-                "ttl": "1h"  # 1-hour cache for codebook
-            }
+            #"cache_control": {
+              #  "type": "ephemeral",
+              #  "ttl": "1h"  # 1-hour cache for codebook
+           # }
         },
         {
             "type": "text",
@@ -129,7 +123,7 @@ Your second task is to print the exact text content of source SOC-003 as provide
 
 You MUST NOT summarize or paraphrase. You MUST return the text exactly as provided.
 
-Your third task is to code this incident according to the established protocol and output structured YAML."""
+"""
         }
     ]
 
