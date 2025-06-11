@@ -48,7 +48,7 @@ quiet-crawler/
 │   ├── daily_bruin_scraper.py
 │
 ├── utils/ # Helper Python scripts
-│   ├── source_reader.py # Load source files and metadata into Python memory
+│   ├── doc_loader.py # Load source and system files and package for Claude API
 │   ├── reddit_json_to_txt_converter.py # Flatten nested JSON reddit data into a plain text file
 │
 ├── api_tests/ # API test scripts for Claude integration
