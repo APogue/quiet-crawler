@@ -15,6 +15,7 @@ from __future__ import annotations
 import os, sys, time
 from pathlib import Path
 from typing import List, Dict
+import json
 
 from dotenv import load_dotenv
 from anthropic import Anthropic
@@ -74,8 +75,8 @@ def call_claude(system_parts: List[Dict], user_parts: List[Dict]):
     resp = client.messages.create(
         model="claude-sonnet-4-20250514",
         max_tokens=8_000,
-        temperature=0,
-        extra_headers={"anthropic-beta": "extended-cache-ttl-2025-04-11"},
+        #temperature=1,
+        #extra_headers={"anthropic-beta": "extended-cache-ttl-2025-04-11"},
         system=system_parts,
         messages=[{"role": "user", "content": user_parts}],
     )
@@ -97,8 +98,8 @@ def main() -> None:
         "type": "text",
         "text": ("You are an expert at coding university incident response data.\n"
         "You execute deterministic audit instructions.\n"
-        "You follow rule-based procedures exactly as written.\n"
-        "You suppress all tendencies toward speculation or helpful summary"),
+        "You follow rule-based procedures exactly as written.\n")
+        #"You suppress all tendencies toward speculation or helpful summary"),
     }
 
     #codebook_path   = BASE_DIR / "projects" / "codebook.md"
@@ -113,8 +114,9 @@ def main() -> None:
         "type": "text",
         "text": (
             f"# INCIDENT {incident_id}\n\n"
-            "1. Print verification that you reviewed **each** attached source doc (reference by title).\n"
-            "2. Print the **exact** contents of source `SOC-003` – no paraphrase, no summary.\n"
+            #"1. Print verification that you reviewed **each** attached source doc (reference by title).\n"
+            "2. Describe controversial elements of DB-001 and use citations with verbatim quotes to back up your claims`.\n"
+            #"3. Hello, please write a haiku about coding.\n"
         ),
     }
 
@@ -131,6 +133,13 @@ def main() -> None:
     # ---------- Show result ----------
     print("\n=== CLAUDE RESPONSE ===\n")
     print(resp.content[0].text if resp.content else "(empty)")
+    # print(f"Response type: {type(resp.content[0])}")
+    # print(f"Response attributes: {dir(resp.content[0])}")
+    # print(f"Full response: {resp.content[0]}")
+    # print(f"Text length: {len(resp.content[0].text)}")
+    # print(f"Last 100 chars: {repr(resp.content[0].text[-100:])}")
+    # print(json.dumps({"text": resp.content[0].text}))
+
 
     if hasattr(resp, "usage"):
         print("\n--- usage ---")

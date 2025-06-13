@@ -165,7 +165,7 @@ def prepare_sources_for_api(source_ids: List[str]) -> List[Dict]:
                 "data": load_source_content(sid),
             },
             "title": sid,
-            "citations": {"enabled": True},
+            "citations": {"enabled": False},
         }
         for sid in source_ids
     ]
