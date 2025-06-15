@@ -1,5 +1,25 @@
 Incident:
 A discrete, campus-affiliated event—documented in the Daily Bruin—that occurs within a specific timeframe and involves identity-based harm, protest-related activity, TPM violations, or campus safety failures. An incident must be clearly bounded in time and produce measurable community impact, administrative or police involvement, or a clear escalation of verbal conflict or physical disruption. It must be distinguishable from ongoing policy discourse or general campus climate issues.
+
+
+
+
+An incident refers to a discrete, bounded event involving harm, escalation, or administrative response.
+
+When evaluating sources:
+- Prioritize content that clearly describes or directly impacts this specific incident.
+- Do not rely on generalized background, unless the source **explicitly connects it** to the incident's events, timeline, actors, or reactions.
+- However, if a quote provides *reasonable support* for describing harm, behavior, response, or framing **relevant to the incident**, it may be included — even if not all context is spelled out.
+
+When in doubt:
+- Include the quote in the `quote_inventory`, with a brief note on why it might be relevant.
+- Downstream YAML decisions will determine whether it qualifies under codebook thresholds.
+
+
+
+
+If you are unsure whether a quote applies to the incident, extract it and add a note: "Possibly relevant — requires confirmation during YAML coding."
+
 ----------------------------------------------------------------------------------------------------------------------------
 Source Type Definitions:
 DB - Daily Bruin
