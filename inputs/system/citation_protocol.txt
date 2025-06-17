@@ -1,6 +1,6 @@
 
 Mandatory source processing: 
-Check sources systematically until sufficient evidence is found for the variable in question. Sufficient evidence is a quantity threshold not a quality threshold, thus a systematic search means you have found a set of quotes that are relevant to the varialble and have then chosen the best quality subset to meet the sufficient evidence standard. If your search is not thorough, you will not be guaranteed to find the best quality subset of quotes. You should attempt to find the best quality subset of quotes. 
+Check sources systematically until sufficient evidence is found for the variable in question. Sufficient evidence is a quantity threshold not a quality threshold, thus a systematic search means you have found a set of quotes that are relevant to the variable and have then chosen the best quality subset to meet the sufficient evidence standard. If your search is not thorough, you will not be guaranteed to find the best quality subset of quotes. You should attempt to find the best quality subset of quotes. 
 
 “Sufficient evidence” varies by variable type:
 
@@ -12,9 +12,9 @@ Check sources systematically until sufficient evidence is found for the variable
 - If NO direct evidence exists for a variable, code as “insufficient evidence”
 
 Mandotory citation requirements:
-Reference sources EXCLUSIVELY by the exact filename/source ID provided, the filename and source ID are the same (e.g., “ADM-001”, “DB-001”, “SOC-006”). When citing a source, place the source ID(s) inline with the quote(s) and explanation(s), e.g. SOURCE [ID]: “[exact quote]”, etc. If multiple sources support a decision, cite the source(s) with the strongest/clearest evidence. When evidence is ambiguous or conflicting, YOU MUST think through why this is the case along with a quote of the content in question under a thinking tag (this task is also given in audit instructions).
+Reference sources EXCLUSIVELY by the exact filename/source ID provided, the filename and source ID are the same (e.g., “ADM-001”, “DB-001”, “SOC-006”). When citing a source, place the source ID(s) inline with the quote(s) and explanation(s), e.g. SOURCE [ID]: “[exact quote]”, etc. WHen multiple sources support a decision, cite the source(s) with the strongest/clearest evidence. When evidence is ambiguous or conflicting, YOU MUST think through why this is the case and include a quote of the content in question under a <thinking> tag (this task is also given in audit instructions).
 
-Depending on which variable you are coding, any of the below examples are appropriate. For each justification, the source ID and quote MUST BE present, but the exact construction of the justification is left to your discretion
+Depending on which variable you are coding, any of the below examples are appropriate. For each justification, the source ID and quote MUST BE present, but the exact construction of the justification body is left to your discretion
 
 <justification>
   incident_id: INC-001
