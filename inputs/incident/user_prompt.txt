@@ -14,7 +14,7 @@ To reiterate in system-level messages:
 
 - the "defitions" document gives you background information on the documents provided to you and how they apply to your task
 
-- you must read thes documents according to a ruleset provided to you in a document called "citations_protocol"
+- you must read these documents according to a ruleset provided to you in a document called "citations_protocol"
 
 - the audit document you will use to code the incident in question is located in a document called "codebook"
 
@@ -30,4 +30,4 @@ In user-messages:
 
 - all post-coding, pre-justification checklists, requiring you to be sure you followed coding protocol prior to arriving at your final decision, will be contained in a document called "verifications" 
 
-- the incident description will be provided in "INC-xxx_description." While all documents other than source documents are general in the sense that they apply to any given incident, this document is specific to the given incident. Thus INC-xxx represents the incident id, where xxx represents the incidents three digit code, i.e. INC-001, INC-002, etc. This document contains the incident summary and metadata (incident_id, date, scope)
+- the incident description will be provided in "INC-xxx_description." While all documents other than source documents are general in the sense that they apply to any given incident, this document is specific to the given incident. Thus INC-xxx represents the incident id, and xxx represents the incident's three digit code, i.e. INC-001, INC-002, etc. This document contains the incident summary and metadata (incident_id, date, scope)

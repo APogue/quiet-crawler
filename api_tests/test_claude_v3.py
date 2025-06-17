@@ -146,6 +146,25 @@ def main() -> None:
         print("input :", resp.usage.input_tokens)
         print("output:", resp.usage.output_tokens)
 
+# def write_audit_log(output_text, incident_id, model, thinking_mode, citations_enabled):
+#     log_path = f"outputs/audit_log/{incident_id}-audit-log.txt"
+#     with open(log_path, "w", encoding="utf-8") as f:
+#         f.write(f"# Claude Audit Log\n")
+#         f.write(f"incident_id: {incident_id}\n")
+#         f.write(f"model: {model}\n")
+#         f.write(f"thinking_mode: {thinking_mode}\n")
+#         f.write(f"citations_enabled: {citations_enabled}\n")
+#         f.write(f"run_time: {datetime.now().strftime('%Y-%m-%d %H:%M %Z')}\n")
+#         f.write("-" * 20 + "\n\n")
+#         f.write(output_text)
+
+
+# raw_text = response.content[0].text
+
+# with open(f"outputs/coded_text/{incident_id}-coded-output.txt", "w", encoding="utf-8") as f:
+#     f.write(raw_text)
+
+
 
 # ────────────────────────────────────────────────────────
 if __name__ == "__main__":

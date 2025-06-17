@@ -94,3 +94,21 @@ Usage: Provides context for institutional principles, educational approaches, an
 Key Distinction: POL sources establish standards for evaluating compliance, but whether an incident meets that standard is discretionary and must be weighed against UCLA's responsibility to the constitution as a state actor. PHIL sources are imperative in determining whether an incident rises to the level of a policy violation and must be considered in analysis. 
 
 ----------------------------------------------------------------------------------------------------------------------------
+
+Give the codebook structure for nomenclature purposes
+
+Variable - variable Definition
+
+    - variable option - option definition - example (may or may not be present)
+
+----------------------------------
+
+define in audit instructions 
+
+<thinking> 
+
+<verification>
+
+<justification>
+
+for a batch of codebook variables, some tasks in the audit instructions only need be completed one time per batch, other should be completed per variable, the distinction is given in the audit instructions doc

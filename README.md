@@ -19,13 +19,11 @@ quiet-crawler/
 │   │   ├── codebook.md                       # Variable dictionary with descriptions and values
 │   │   ├── codebook_protocol.md              # Logic for applying codebook (e.g., disqualifying evidence checks)
 │   │   ├── yaml_protocol.txt                 # Output format: YAML-in-text + structured examples
-│   │   ├── thinking_config.txt               # Toggle for chain-of-thought or extended reasoning 
-│   │   └── model_config.txt                  # Sets which Claude model to use (e.g. claude-opus-4)
+│   │   └── verifications.txt                 # Claude must confirm checklist (e.g. "I have reviewed all sources")
 │   ├── incident/                           # Per-incident user message inputs
 │   │   ├── incident_description.txt          # Summary + metadata (incident_id, date, scope)
 │   │   ├── user_prompt.txt                   # Task framing for Claude ("Here is an incident I want you to code...")
-│   │   ├── audit_instructions.txt            # Transparency logging, quote validation rules
-│   │   └── verifications.txt                 # Claude must confirm checklist (e.g. "I have reviewed all sources")
+│   │   ├── audit_instructions.txt            # Central command points to modules, then requests COT, verification and justification
 │
 ├── sources/                            # Final cleaned source text files (used for incident coding)
 │   ├── ADM-001.txt
