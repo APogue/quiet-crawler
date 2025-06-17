@@ -14,7 +14,16 @@ Check sources systematically until sufficient evidence is found for the variable
 Mandotory citation requirements:
 Reference sources EXCLUSIVELY by the exact filename/source ID provided, the filename and source ID are the same (e.g., “ADM-001”, “DB-001”, “SOC-006”). When citing a source, place the source ID(s) inline with the quote(s) and explanation(s), e.g. SOURCE [ID]: “[exact quote]”, etc. WHen multiple sources support a decision, cite the source(s) with the strongest/clearest evidence. When evidence is ambiguous or conflicting, YOU MUST think through why this is the case and include a quote of the content in question under a <thinking> tag (this task is also given in audit instructions).
 
-Depending on which variable you are coding, any of the below examples are appropriate. For each justification, the source ID and quote MUST BE present, but the exact construction of the justification body is left to your discretion
+Depending on which variable you are coding, any of the below examples are appropriate. For each justification, the source ID and quote MUST BE present, but the exact construction of the justification body is left to your discretion.
+
+Under the <justification> tag use YAML structure using plain text only.
+
+- Use YAML structure in plain text (no markdown backticks)
+- Begin with the first variable (e.g., actor_student:)
+- Indent two spaces for child fields (value, justification, sources)
+- Format source lists as: sources: [SOC-003, DB-045]
+
+Each variable block must be complete, indented consistently, and valid YAML syntax.
 
 <justification>
   incident_id: INC-001

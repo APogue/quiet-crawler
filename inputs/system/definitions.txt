@@ -1,5 +1,48 @@
+Study definition:
+A case-based analysis of how universities respond to campus incidents involving identity-based harm, protest, policy violations, or campus safety failures. Each incident is coded using a fixed set of variables, based on evidence from public sources, to compare patterns in administrative action, media framing, and student narratives.
+
 Incident:
 A discrete, campus-affiliated event—documented in the Daily Bruin—that occurs within a specific timeframe and involves identity-based harm, protest-related activity, TPM violations, or campus safety failures. An incident must be clearly bounded in time and produce measurable community impact, administrative or police involvement, or a clear escalation of verbal conflict or physical disruption. It must be distinguishable from ongoing policy discourse or general campus climate issues.
+
+The incident summary is a summary provided that briefly describes the incident and discusses the event, actors, locaton and timeframe. The incident scope defines the people, places, locations, events, dates etc. that are considered a part of the incident. Anything outside of this boundary can be general campus climate, similar but distinct incidents or contextual information, among other things that make up broader issues that the sources provided may cover. The incident summary and scope are designed to aid in isolation of the incident in question from other less relevant information contained in source documents. 
+
+------------------------------------------------------------------------------------------------------------------------------------------
+
+Codebook: 
+The 
+
+Codebook structure for nomenclature purposes: 
+
+Justification
+
+Variable - variable Definition
+
+    - variable option - option definition - example (may or may not be present)
+
+Codebook with protocol:
+
+
+Output structure
+
+<thinking> 
+
+<verification>
+
+<justification>
+
+
+
+Sources 
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -95,20 +138,3 @@ Key Distinction: POL sources establish standards for evaluating compliance, but 
 
 ----------------------------------------------------------------------------------------------------------------------------
 
-Give the codebook structure for nomenclature purposes
-
-Variable - variable Definition
-
-    - variable option - option definition - example (may or may not be present)
-
-----------------------------------
-
-define in audit instructions 
-
-<thinking> 
-
-<verification>
-
-<justification>
-
-for a batch of codebook variables, some tasks in the audit instructions only need be completed one time per batch, other should be completed per variable, the distinction is given in the audit instructions doc

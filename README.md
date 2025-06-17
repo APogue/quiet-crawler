@@ -14,11 +14,10 @@ quiet-crawler/
 ├── inputs/                             # Claude API prompt inputs (modular, editable)
 │   ├── system/                             # System-level configuration (shared across all incidents)
 │   │   ├── system_role.txt                   # Claude's persona (e.g., "You are an evidence auditor...")
-│   │   ├── citation_protocol.txt             # How to extract and attribute quotes (format, source ID rules)
+│   │   ├── justification_protocol.txt        # How to extract and attribute quotes and output justification block (YAML format)
 │   │   ├── definitions.txt                   # Incident boundaries, source types, codebook meta-rules
 │   │   ├── codebook.md                       # Variable dictionary with descriptions and values
 │   │   ├── codebook_protocol.md              # Logic for applying codebook (e.g., disqualifying evidence checks)
-│   │   ├── yaml_protocol.txt                 # Output format: YAML-in-text + structured examples
 │   │   └── verifications.txt                 # Claude must confirm checklist (e.g. "I have reviewed all sources")
 │   ├── incident/                           # Per-incident user message inputs
 │   │   ├── incident_description.txt          # Summary + metadata (incident_id, date, scope)

@@ -23,9 +23,9 @@ Some tasks are only required to be done once, other tasks must be performed for 
 
 10. after you've evaluated the sources, think about which variable option(s) you should choose (for each variable)
 
-11. verify that you have read the citations protocol document (only one verification needed)
+11. verify that you have read the justification protocol document (only one verification needed)
 
-12. as you follow the citations protocol for gathering and quoting sources relevant to the variable option being considered, think about why each quote does or does not apply
+12. as you follow the justification protocol for gathering and quoting sources relevant to the variable option being considered, think about why each quote does or does not apply
 
 13. think out loud (in written text) if there is any doubt or confusion about whether a quote applies, and include the quote with your reasoning
 
