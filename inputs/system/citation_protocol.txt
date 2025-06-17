@@ -1,0 +1,4 @@
+- Quote each source directly using this format: SOC-003: "exact quote"
+- If a quote may be relevant but is unclear, include it with a short note
+- Do not summarize — extract exact words
+- Do not cite documents unless you have directly quoted them

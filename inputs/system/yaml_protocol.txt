@@ -1,0 +1,18 @@
+Return your output in YAML structure using plain text only.
+
+Do not wrap your YAML in backticks or markdown code blocks. Do not insert any introductory explanation or conclusion. Simply begin with the first variable and continue until the last.
+
+Use this format:
+
+actor_student:
+  value: true
+  justification: 'SOC-003: "The protest was organized by students." No contrary evidence.'
+  sources: [SOC-003]
+
+Each variable block must be complete, indented consistently, and valid YAML syntax.
+
+
+- Use YAML structure in plain text (no markdown backticks)
+- Begin with the first variable (e.g., actor_student:)
+- Indent two spaces for child fields (value, justification, sources)
+- Format source lists as: sources: [SOC-003, DB-045]

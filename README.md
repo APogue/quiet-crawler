@@ -16,8 +16,8 @@ quiet-crawler/
 │   │   ├── system_role.txt                   # Claude's persona (e.g., "You are an evidence auditor...")
 │   │   ├── citation_protocol.txt             # How to extract and attribute quotes (format, source ID rules)
 │   │   ├── definitions.txt                   # Incident boundaries, source types, codebook meta-rules
-│   │   ├── codebook.txt                      # Variable dictionary with descriptions and values
-│   │   ├── codebook_protocol.txt             # Logic for applying codebook (e.g., disqualifying evidence checks)
+│   │   ├── codebook.md                       # Variable dictionary with descriptions and values
+│   │   ├── codebook_protocol.md              # Logic for applying codebook (e.g., disqualifying evidence checks)
 │   │   ├── yaml_protocol.txt                 # Output format: YAML-in-text + structured examples
 │   │   ├── thinking_config.txt               # Toggle for chain-of-thought or extended reasoning 
 │   │   └── model_config.txt                  # Sets which Claude model to use (e.g. claude-opus-4)
