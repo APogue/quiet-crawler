@@ -1,69 +1,72 @@
-Study definition:
+Study:
 A case-based analysis of how universities respond to campus incidents involving identity-based harm, protest, policy violations, or campus safety failures. Each incident is coded using a fixed set of variables, based on evidence from public sources, to compare patterns in administrative action, media framing, and student narratives.
+
+---------------------
 
 Incident:
 A discrete, campus-affiliated event—documented in the Daily Bruin—that occurs within a specific timeframe and involves identity-based harm, protest-related activity, TPM violations, or campus safety failures. An incident must be clearly bounded in time and produce measurable community impact, administrative or police involvement, or a clear escalation of verbal conflict or physical disruption. It must be distinguishable from ongoing policy discourse or general campus climate issues.
 
-The incident summary is a summary provided that briefly describes the incident and discusses the event, actors, locaton and timeframe. The incident scope defines the people, places, locations, events, dates etc. that are considered a part of the incident. Anything outside of this boundary can be general campus climate, similar but distinct incidents or contextual information, among other things that make up broader issues that sources provided may cover. The incident summary and scope are designed to aid in isolation of the incident in question from such other less relevant information contained in source documents. 
+The incident summary:
+A summary provided that briefly describes the incident and discusses the event, actors, locaton and timeframe. Designed to aid in isolation of the incident in question from such other less relevant information contained in source documents. 
 
-------------------------------------------------------------------------------------------------------------------------------------------
+Incident scope:
+Defines the people, places, locations, events, dates etc. that are considered a part of the incident. Anything outside of this boundary can be general campus climate, similar but distinct incidents or contextual information, among other things that make up broader issues that sources may cover. Designed to aid in isolation of the incident in question from such other less relevant information contained in source documents. 
+ 
+
+---------------------
+
+Variable:
+A distinct field within the codebook representing a specific aspect of an incident to be evaluated (e.g., actor_student, admin_response_type). Each variable has a defition, a set of valid value options, and value-specific definitions. Variables are the core units of structured comparison across incidents.
+
+Value:
+A discrete option selected for a given variable based on the coding of an incident. Each value is explicitly defined in the codebook and chosen only when evidence satisfies the value definition using the approach specified in the coding protocol.
+
+
+
 
 Codebook: 
-The 
+Variable dictionary with descriptions, valid values, and coding notes for each field used in the structured analysis of pre-defined incidents using source material specific to each case. Defines the logic, categories, and thresholds needed to enable consistent cross-incident comparison of oversight responses, involved perspectives, broader community impacts, and public discourse.
 
-Codebook structure for nomenclature purposes: 
-
-Justification
-
-Variable - variable Definition
-
-    - variable option - option definition - example (may or may not be present)
+Codebook structure for nomenclature purposes:
+- **Variable:** `crowd_noise_level`  
+  **Definition:** Describes the predominant level of audible vocal activity by participants during the incident. May reflect chants, speech, group volume, or ambient sound depending on source descriptions or video media.
+  **Valid values:**   → `quiet`, `conversational`, `loud`, `disruptive`  
+  **Value definitions:**  
+  - `quiet` → No reported or observable vocal activity; participants remained silent or passive.  
+  - `conversational` → Low-volume talking in small groups, not intended for amplification or performance.  
+  - `loud` → Group volume was high enough to draw attention or disrupt informal nearby activity, but not reported as interfering with operations.  
+  - `disruptive` → Volume level interfered with scheduled academic, administrative, or operational activity; referenced explicitly in reporting or admin response.
 
 Codebook with protocol:
+Codebook with integrated Claude-specific logic. Protocols are designed to ensure best practices methods are used in coding incidents. 
 
+---------------------
 
-Output structure
-
+Output structure:
 <thinking> 
-
+A freeform section where the model explicitly processes ambiguity, evaluates conflicting evidence, or reasons through difficult coding decisions. This section should contain direct quotes from sources when the model is unsure whether they apply, and articulate the rationale for inclusion or exclusion. Used to document internal deliberation. This output uses XML tag <thinking>.
 <verification>
-
+A checklist-driven section where the model confirms compliance with all required protocols and steps. Some verifications are global (done once per run), others must be completed for each variable. Each verification should be written as a discrete sentence that includes both the verification condition and its satisfaction. This output uses XML tag <verification>.
 <justification>
+A structured YAML block containing the final coded output for one variables. Justification requirements are given in the justification_protocol document. The block includes: 
+- The assigned value for each variable
+- An evidence-based justification that references specific quotes
+- A list of source IDs supporting the claim
 
+This "answer" is referred to as the justification block, this output uses XML tag <justification>. It must follow strict YAML syntax and formatting rules as described in the justificaton_protocol document. 
 
+---------------------
 
-Sources 
+Sources:
+Sources are text or image-to-text files provided as evidence for coding a specific incident. A single source may contain both incident-relevant and extraneous information. It is essential to distinguish between material that directly pertains to the defined incident and background content, general context, or references to unrelated events. Within the incident-relevant material, further parsing is required to determine which portions apply to each specific variable. Only quotes or descriptions that meet both criteria—incident specificity and variable relevance—should be used for coding decisions.
 
+---------------------
 
+Policy documents:
+Policy documents are sources that define the rules, codes of conduct, or procedural standards relevant to university governance. These files will carry the prefix PHIL- or POL-. When evaluating policy violations, it is essential that the model does not stop after locating the first applicable policy. All relevant policy documents must be read in full, as multiple frameworks may apply to the same incident. In cases where policies appear to contradict or overlap, discretion must be used to weigh them against one another. The final coding decision should reflect a reasoned judgment across all applicable policies, not a single-rule interpretation.
 
+---------------------
 
-
-
-
-
-
-
-
-
-
-
-An incident refers to a discrete, bounded event involving harm, escalation, or administrative response.
-
-When evaluating sources:
-- Prioritize content that clearly describes or directly impacts this specific incident.
-- Do not rely on generalized background, unless the source **explicitly connects it** to the incident's events, timeline, actors, or reactions.
-- However, if a quote provides *reasonable support* for describing harm, behavior, response, or framing **relevant to the incident**, it may be included — even if not all context is spelled out.
-
-When in doubt:
-- Include the quote in the `quote_inventory`, with a brief note on why it might be relevant.
-- Downstream YAML decisions will determine whether it qualifies under codebook thresholds.
-
-
-
-
-If you are unsure whether a quote applies to the incident, extract it and add a note: "Possibly relevant — requires confirmation during YAML coding."
-
-----------------------------------------------------------------------------------------------------------------------------
 Source Type Definitions:
 DB - Daily Bruin
 
@@ -136,5 +139,5 @@ Usage: Provides context for institutional principles, educational approaches, an
 
 Key Distinction: POL sources establish standards for evaluating compliance, but whether an incident meets that standard is discretionary and must be weighed against UCLA's responsibility to the constitution as a state actor. PHIL sources are imperative in determining whether an incident rises to the level of a policy violation and must be considered in analysis. 
 
-----------------------------------------------------------------------------------------------------------------------------
+---------------------
 

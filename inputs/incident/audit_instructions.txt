@@ -21,19 +21,19 @@ Some tasks are only required to be done once, other tasks must be performed for 
 
 9. then think as you evaluate each source to determine what content from any source are most relevant to the codebook variable in question (for each variable)
 
-10. after you've evaluated the sources, think about which variable option(s) you should choose (for each variable)
+10. after you've evaluated the sources, think about which variable value(s) you should choose (for each variable)
 
 11. verify that you have read the justification protocol document (only one verification needed)
 
-12. as you follow the justification protocol for gathering and quoting sources relevant to the variable option being considered, think about why each quote does or does not apply
+12. as you follow the justification protocol for gathering and quoting sources relevant to the variable value being considered, think about why each quote does or does not apply
 
 13. think out loud (in written text) if there is any doubt or confusion about whether a quote applies, and include the quote with your reasoning
 
 14. verify that you have read the verifications checklist (only one verification needed)
 
-15. Before you come to the final justification conclusion regarding which variable option you have chosen, think about whether you have met each requirement on the verifications list (for each variable)
+15. Before you come to the final justification conclusion regarding which variable value you have chosen, think about whether you have met each requirement on the verifications list (for each variable)
  
-16. Finally, as you provide your justification for your variable option, think through why this option is the best answer (for each variable)
+16. Finally, as you provide your justification for your variable value, think through why this value is the best answer (for each variable)
 
 17. verify that you have read the yaml protocol document (only one verification needed)
 
