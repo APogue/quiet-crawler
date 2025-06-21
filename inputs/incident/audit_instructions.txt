@@ -11,33 +11,37 @@ Some tasks are only required to be done once, other tasks must be performed for 
 
 4. verify that you have read the incident description "INC-xxx_description" (only one verification needed)
 
-5. verify which codebook variable you are tasked to code (for each variable)
+5. verify that you have read each source provided in its entirety (only one verification needed)
 
-6. verify that you have searched codebook protocols for which protocol applies to the codebook variable (for each variable)
+6. think through what the specific incident boundary is in this case based on the incident description you read (only one verification needed)
 
-7. verify that you have read the correct protocol (list it by name) that corresponds to that codebook variable (for each variable)
+7. think about which passages in each source relate to the incident (only one verification needed)
 
-8. verify that you have read each source provided in its entirety (only one verification needed)
+8. verify which codebook variable you are tasked to code (for each variable)
 
-9. then think as you evaluate each source to determine what content from any source are most relevant to the codebook variable in question (for each variable)
+9. verify that you have searched codebook with protocols for which protocol applies to the codebook variable (for each variable)
 
-10. after you've evaluated the sources, think about which variable value(s) you should choose (for each variable)
+10. verify that you have read the correct protocol (list it by name) that corresponds to that codebook variable (for each variable)
 
-11. verify that you have read the justification protocol document (only one verification needed)
+11. think as you evaluate each source to determine what content from any source are most relevant to the codebook variable in question (for each variable)
 
-12. as you follow the justification protocol for gathering and quoting sources relevant to the variable value being considered, think about why each quote does or does not apply
+12. after you've evaluated the sources, think about which value for that variable you should choose (for each variable)
 
-13. think out loud (in written text) if there is any doubt or confusion about whether a quote applies, and include the quote with your reasoning
+13. verify that you have read the justification protocol document (only one verification needed)
 
-14. verify that you have read the verifications checklist (only one verification needed)
+14. as you follow the justification protocol for gathering and quoting sources relevant to the variable value being considered, think about why each quote does or does not apply (for each variable)
 
-15. Before you come to the final justification conclusion regarding which variable value you have chosen, think about whether you have met each requirement on the verifications list (for each variable)
+15. if there is any doubt or confusion about whether a quote applies, think out loud about it and include the quote with your reasoning (for each variable)
+
+16. verify that you have read the verifications checklist (only one verification needed)
+
+17. Before you come to the final justification conclusion regarding which variable value you have chosen, think about whether you have met each requirement on the verifications list (for each variable)
  
-16. Finally, as you provide your justification for your variable value, think through why this value is the best answer (for each variable)
+18. Finally, as you provide your justification for your variable value, think through why this value is the best answer (for each variable)
 
-17. verify that you have read the yaml protocol document (only one verification needed)
+19. verify that you have read the yaml protocol in the justification protocol document (only one verification needed)
 
-18. verify that your final justification is in compliance with the yaml protocol document (only one verification needed)
+20. verify that your final justification is in compliance with the yaml protocol (only one verification needed)
 
 
 

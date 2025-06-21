@@ -11,6 +11,9 @@ A summary provided that briefly describes the incident and discusses the event, 
 
 Incident scope:
 Defines the people, places, locations, events, dates etc. that are considered part of the incident. Anything outside of this boundary can be general campus climate, similar but distinct incidents or contextual information, among other things that make up broader issues that sources may cover. Designed to aid in isolation of the incident in question from other less relevant information contained in source documents. 
+
+Incident boundary:
+
  
 ---------------------
 
@@ -110,6 +113,10 @@ TikTok videos
 
 Authority: Direct participant and community voices; real-time documentation
 Usage: Captures immediate reactions, participant perspectives, visual evidence, and community discourse
+
+---------------------
+
+Policy Type Definitions:
 
 POL - Policy Documents
 
