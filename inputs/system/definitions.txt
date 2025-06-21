@@ -7,12 +7,11 @@ Incident:
 A discrete, campus-affiliated event—documented in the Daily Bruin—that occurs within a specific timeframe and involves identity-based harm, protest-related activity, TPM violations, or campus safety failures. An incident must be clearly bounded in time and produce measurable community impact, administrative or police involvement, or a clear escalation of verbal conflict or physical disruption. It must be distinguishable from ongoing policy discourse or general campus climate issues.
 
 The incident summary:
-A summary provided that briefly describes the incident and discusses the event, actors, locaton and timeframe. Designed to aid in isolation of the incident in question from such other less relevant information contained in source documents. 
+A summary provided that briefly describes the incident and discusses the event, actors, locaton and timeframe. Designed to aid in isolation of the incident in question from other less relevant information contained in source documents. 
 
 Incident scope:
-Defines the people, places, locations, events, dates etc. that are considered a part of the incident. Anything outside of this boundary can be general campus climate, similar but distinct incidents or contextual information, among other things that make up broader issues that sources may cover. Designed to aid in isolation of the incident in question from such other less relevant information contained in source documents. 
+Defines the people, places, locations, events, dates etc. that are considered part of the incident. Anything outside of this boundary can be general campus climate, similar but distinct incidents or contextual information, among other things that make up broader issues that sources may cover. Designed to aid in isolation of the incident in question from other less relevant information contained in source documents. 
  
-
 ---------------------
 
 Variable:
@@ -20,9 +19,6 @@ A distinct field within the codebook representing a specific aspect of an incide
 
 Value:
 A discrete option selected for a given variable based on the coding of an incident. Each value is explicitly defined in the codebook and chosen only when evidence satisfies the value definition using the approach specified in the coding protocol.
-
-
-
 
 Codebook: 
 Variable dictionary with descriptions, valid values, and coding notes for each field used in the structured analysis of pre-defined incidents using source material specific to each case. Defines the logic, categories, and thresholds needed to enable consistent cross-incident comparison of oversight responses, involved perspectives, broader community impacts, and public discourse.
@@ -36,6 +32,9 @@ Codebook structure for nomenclature purposes:
   - `conversational` → Low-volume talking in small groups, not intended for amplification or performance.  
   - `loud` → Group volume was high enough to draw attention or disrupt informal nearby activity, but not reported as interfering with operations.  
   - `disruptive` → Volume level interfered with scheduled academic, administrative, or operational activity; referenced explicitly in reporting or admin response.
+
+Protocol:
+A defined rule or logic framework used to guide consistent application of a variable across incidents. Protocols may establish disqualifying conditions, evidence gathering rules and guidelines, evidence sufficiency thresholds, evidence weighting, or required review steps. Protocols are stored in designated files (e.g., codebook_protocol.txt, justification_protocol.txt, audit_instructions.txt) and must be referenced and followed to ensure proper coding practices.
 
 Codebook with protocol:
 Codebook with integrated Claude-specific logic. Protocols are designed to ensure best practices methods are used in coding incidents. 
