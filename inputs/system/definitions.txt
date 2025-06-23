@@ -29,7 +29,7 @@ Variable dictionary with descriptions, valid values, and coding notes for each f
 Codebook structure for nomenclature purposes:
 - **Variable:** `crowd_noise_level`  
   **Definition:** Describes the predominant level of audible vocal activity by participants during the incident. May reflect chants, speech, group volume, or ambient sound depending on source descriptions or video media.
-  **Valid values:**   → `quiet`, `conversational`, `loud`, `disruptive`  
+  **Valid values:** → `quiet`, `conversational`, `loud`, `disruptive`  
   **Value definitions:**  
   - `quiet` → No reported or observable vocal activity; participants remained silent or passive.  
   - `conversational` → Low-volume talking in small groups, not intended for amplification or performance.  
