@@ -1,49 +1,94 @@
+AUDIT INSTRUCTIONS FOR INCIDENT CODING
 
-Use XML tags like <thinking> <verification> and <justification> to separate reasoning, audit verification and the final answer
+Use XML tags: <thinking>, <verification>, and <justification> to organize your work.
 
-Some tasks are only required to be done once, other tasks must be performed for each variable. 
+=== INITIAL SETUP (Complete Once) ===
 
-1. verify that you have read the audit instructions message (for each variable)
+<verification>
+Confirm all inputs loaded:
+□ Audit instructions (this document)
+□ User prompt with incident ID
+□ Definitions document
+□ INC-XXX full description
+□ All source documents
+□ Extracted policy sections (INC-XXX-policies.yml)
+□ Justification protocol document
+□ Codebook with variable protocols
+</verification>
 
-2. verify that you have read the user prompt (only one verification needed)
+<thinking>
+1. INCIDENT BOUNDARIES:
+   - Core event: [what happened]
+   - Time frame: [start to end]
+   - Key actors: [who was involved]
+   - Location: [where it occurred]
+   - Exclude: [what's outside scope]
 
-3. verify that you have read the definitions document (only one verification needed)
+2. RELEVANT PASSAGES IDENTIFIED: (this is going to be way too much context window overhead)
+   [List source passages that relate to this incident]
+</thinking>
 
-4. verify that you have read the incident description "INC-xxx_description" (only one verification needed)
+=== PER-VARIABLE CODING (Repeat for Each) ===
 
-5. verify that you have read each source provided in its entirety (only one verification needed)
+<verification>
+Current variable: [VARIABLE_NAME]
+Applicable protocol: [PROTOCOL_NAME from codebook]
+</verification>
 
-6. think through what the specific incident boundary is in this case based on the incident description you read (only one verification needed)
+<thinking>
+Which sources contain information relevant to [VARIABLE_NAME]?
+- Source X: [relevant because...]
+- Source Y: [relevant because...]
 
-7. think about which passages in each source relate to the incident (only one verification needed)
+Possible values based on protocol:
+- Value A: [evidence for/against]
+- Value B: [evidence for/against]
+</thinking>
 
-8. verify which codebook variable you are tasked to code (for each variable)
+<justification> should be <thinking>
+Gathering quotes for [VARIABLE_NAME]:
 
-9. verify that you have searched codebook with protocols for which protocol applies to the codebook variable (for each variable)
+Quote 1: "[exact quote]" (Source: XX)
+- Relevance: [why this matters]
+- Ambiguity: [any uncertainty about application]
 
-10. verify that you have read the correct protocol (list it by name) that corresponds to that codebook variable (for each variable)
+Quote 2: "[exact quote]" (Source: YY)
+- Relevance: [why this matters]
+- Ambiguity: [any uncertainty about application]
 
-11. think as you evaluate each source to determine what content from any source are most relevant to the codebook variable in question (for each variable)
+[Continue for all relevant quotes]
+</justification>
 
-12. after you've evaluated the sources, think about which value for that variable you should choose (for each variable)
+<verification> It eliminated "verifications checklist" from the initial verification step, does that mean it should be kept here?
+Pre-decision checklist:
+□ All relevant sources reviewed for this variable
+□ Quotes are exact and sourced
+□ Ambiguities explicitly noted
+□ Protocol requirements met
+</verification>
 
-13. verify that you have read the justification protocol document (only one verification needed)
+<justification> should be <thinking>
+FINAL DECISION: [VARIABLE_NAME] = [VALUE]
 
-14. as you follow the justification protocol for gathering and quoting sources relevant to the variable value being considered, think about why each quote does or does not apply (for each variable)
+Rationale: [Why this value best fits the evidence, referencing specific quotes and protocol criteria]
+</justification>
 
-15. if there is any doubt or confusion about whether a quote applies, think out loud about it and include the quote with your reasoning (for each variable)
+=== TRANSITION POINT ===
+[State: "Completed coding for [VARIABLE_NAME]. Moving to next variable."]
+[This serves as attention refresh between variables]
 
-16. verify that you have read the verifications checklist (only one verification needed)
+=== FINAL OUTPUT FORMAT ===
 
-17. Before you come to the final justification conclusion regarding which variable value you have chosen, think about whether you have met each requirement on the verifications list (for each variable)
- 
-18. Finally, as you provide your justification for your variable value, think through why this value is the best answer (for each variable)
-
-19. verify that you have read the yaml protocol in the justification protocol document (only one verification needed)
-
-20. verify that your final justification is in compliance with the yaml protocol (only one verification needed)
-
-
+<verification>
+All variables coded per YAML protocol and variable type (metadata, simple, complex, etc.):
+<justification>
+```yaml
+variable:
+   value: coded_value
+   justification: "SOURCE-ID: 'exact quote.' [Brief explanation of how quote supports coding decision.]"
+   sources: [SOURCE-ID, etc.]
+  [etc.]
+  ```
 
 
 
