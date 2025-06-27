@@ -9,7 +9,7 @@ Confirm all inputs loaded:
 □ Audit instructions (this document)
 □ User prompt with incident ID
 □ Definitions document
-□ INC-XXX full description
+□ INC-XXX full description (incident_data.yml)
 □ All source documents
 □ Extracted policy sections (INC-XXX-policies.yml)
 □ Justification protocol document
@@ -17,15 +17,11 @@ Confirm all inputs loaded:
 </verification>
 
 <thinking>
-1. INCIDENT BOUNDARIES:
-   - Core event: [what happened]
-   - Time frame: [start to end]
-   - Key actors: [who was involved]
-   - Location: [where it occurred]
-   - Exclude: [what's outside scope]
-
-2. RELEVANT PASSAGES IDENTIFIED: (this is going to be way too much context window overhead)
-   [List source passages that relate to this incident]
+Populate INCIDENT BOUNDARIES using information from the incident description only:
+- Core event: [what happened]
+- Time frame: [start to end]
+- Key actors: [who was involved]
+- Location: [where it occurred]
 </thinking>
 
 === PER-VARIABLE CODING (Repeat for Each) ===
@@ -33,63 +29,52 @@ Confirm all inputs loaded:
 <verification>
 Current variable: [VARIABLE_NAME]
 Applicable protocol: [PROTOCOL_NAME from codebook]
+Evidence collection per justification protocol
 </verification>
 
 <thinking>
-Which sources contain information relevant to [VARIABLE_NAME]?
-- Source X: [relevant because...]
-- Source Y: [relevant because...]
+Scanning sources for [VARIABLE_NAME] evidence:
+- Source X: [what relevant content found]
+- Source Y: [what relevant content found]
+[Note: Incident boundary check happens during quote selection]
 
-Possible values based on protocol:
-- Value A: [evidence for/against]
-- Value B: [evidence for/against]
+Quote collection and evaluation:
+SOURCE-ID: "[exact quote]"
+- Within boundary: [yes/no - if no, exclude, - if unclear, note]
+- Relevance: [how it relates to variable]
+- Strength: [direct/indirect/ambiguous]
+
+[Continue for all potentially relevant quotes]
+
+Evaluating possible values per codebook protocol:
+- Value A: [evidence assessment]
+- Value B: [evidence assessment]
+
+If evidence conflicts: [explain resolution]
 </thinking>
 
-<justification> should be <thinking>
-Gathering quotes for [VARIABLE_NAME]:
-
-Quote 1: "[exact quote]" (Source: XX)
-- Relevance: [why this matters]
-- Ambiguity: [any uncertainty about application]
-
-Quote 2: "[exact quote]" (Source: YY)
-- Relevance: [why this matters]
-- Ambiguity: [any uncertainty about application]
-
-[Continue for all relevant quotes]
-</justification>
-
-<verification> It eliminated "verifications checklist" from the initial verification step, does that mean it should be kept here?
+<verification>
 Pre-decision checklist:
 □ All relevant sources reviewed for this variable
-□ Quotes are exact and sourced
-□ Ambiguities explicitly noted
-□ Protocol requirements met
+□ Selected quotes are within the incident boundary
+□ Quotes are exact and cited correctly
+□ Quotes meet "best evidence" standard
+□ Evidence threshold was met for variable type
+□ Ambiguities/conflicts addressed
+□ All protocol requirements were met
 </verification>
 
-<justification> should be <thinking>
-FINAL DECISION: [VARIABLE_NAME] = [VALUE]
+=== TRANSITION POINT ===
 
-Rationale: [Why this value best fits the evidence, referencing specific quotes and protocol criteria]
+[State: "Completed [VARIABLE_NAME]. Moving to next variable."]
+
+=== FINAL OUTPUT ===
+
+<justification>
+variable_name:
+  value: [coded_value]
+  justification: "SOURCE-ID: '[quote].' [How this supports coding decision.] SOURCE-ID2: '[additional quote if needed].' [Additional reasoning.] [Evidence satisfies coding protocol requirements.]"
+  sources: [SOURCE-ID, SOURCE-ID2]
 </justification>
 
-=== TRANSITION POINT ===
-[State: "Completed coding for [VARIABLE_NAME]. Moving to next variable."]
-[This serves as attention refresh between variables]
-
-=== FINAL OUTPUT FORMAT ===
-
-<verification>
-All variables coded per YAML protocol and variable type (metadata, simple, complex, etc.):
-<justification>
-```yaml
-variable:
-   value: coded_value
-   justification: "SOURCE-ID: 'exact quote.' [Brief explanation of how quote supports coding decision.]"
-   sources: [SOURCE-ID, etc.]
-  [etc.]
-  ```
-
-
-
- 
+[Continue for all variables]

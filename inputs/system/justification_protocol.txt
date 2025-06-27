@@ -1,52 +1,67 @@
+JUSTIFICATION PROTOCOL
 
-Mandatory source processing: 
-Check sources systematically until sufficient evidence is found for the variable in question. Sufficient evidence is a quantity threshold not a quality threshold, thus a systematic search means you have found a set of quotes that are relevant to the variable and have then chosen the best quality subset to meet the sufficient evidence standard. If your search is not thorough, you will not be guaranteed to find the best quality subset of quotes. You should attempt to find the best quality subset of quotes. 
+## Source Processing Requirements
 
-“Sufficient evidence” varies by variable type:
+Coding variable overview:
+1. Scan ALL provided sources for content relevant to the variable
+2. Collect quotes from relevant content that are within the incident boundary and relate to the variable (regardless of initial quality)
+3. Filter quotes: select the quotes that make the strongest case for or against a particular variable value
+4. Evidence assessment: assess value appropriateness based on quotes 
+5. Select the most appropriate value as your final answer: package the quotes that serve as evidence and the reason why your value choice best fits this evidence in a justification block in yaml format. Mention how the justification satisfies coding protocol criteria where appropriate. 
 
-- For factual variables (dates, locations): One clear source is usually sufficient
-- For subjective variables (tone, positioning): YOU MUST use multiple sources to establish a pattern
-- For complex variables (policy violations): YOU MUST cross-referencing multiple policy documents
-- Every claim must be supported by specific quotes with source attribution
-- Connect quotes to coding decision with clear reasoning in you justification
+Evidence thresholds by variable type:
+- Factual variables (dates, locations): One authoritative source
+- Interpretive variables (tone, positioning): Multiple sources showing a pattern
+- Policy-based variables: Cross-reference incident facts with mutliple policy texts
 - If NO direct evidence exists for a variable, code as “insufficient evidence”
 
-Mandotory citation requirements:
-Reference sources EXCLUSIVELY by the exact filename/source ID provided, the filename and source ID are the same (e.g., “ADM-001”, “DB-001”, “SOC-006”). When citing a source, place the source ID(s) inline with the quote(s) and explanation(s), e.g. SOURCE [ID]: “[exact quote]”, etc. When multiple sources support a decision, cite the source(s) with the strongest/clearest evidence. When evidence is ambiguous or conflicting, YOU MUST think through why this is the case and include a quote of the content in question under a <thinking> tag (this task is also given in audit instructions).
+## Citation Requirements
 
-Depending on which variable you are coding, any of the below examples are appropriate. For each justification, the source ID and quote MUST BE present, but the exact construction of the justification body is left to your discretion.
+- Use exact source IDs as provided (e.g., "ADM-001", "DB-001")
+- Format: Inline SOURCE-ID: "[exact quote]" and explanation
+- Quote selection: prioritize direct/most explicit/clearest evidence
+- Quotes are verbatim
 
-Under the <justification> tag use YAML structure using plain text only.
+## Special Handling
 
-- Use YAML structure in plain text (no markdown backticks)
-- Begin with the first variable (e.g., actor_student:)
-- Indent two spaces for child fields (value, justification, sources)
-- Format source lists as: sources: [SOC-003, DB-045]
+When evidence conflicts or is ambiguous:
+<thinking>
+Conflicting evidence for [variable]:
+SOURCE-1: "[quote suggesting Value X]"
+SOURCE-2: "[quote suggesting Value Y]"
+Resolution: [reasoning for final choice]
+</thinking>
 
-Each variable block must be complete, indented consistently, and valid YAML syntax.
+## Output Format
+
+Use plain YAML under <justification> tags, below are examples. Appropriate application and exact construction are left to your discretion:
 
 <justification>
   incident_id: INC-001
   date: YYYY-MM-DD
   source_ids: [list of actually provided source files]
   keywords: [keyword1, keyword2, ...]
+</justification>
 
 <justification>
   simple_variable:
     value: coded_value
     justification: "SOURCE-ID: 'exact quote.' [Brief explanation of how quote supports coding decision.]"
     sources: [SOURCE-ID, etc.]
+</justification>
 
+For variables requiring multiple sources/evidence types
 <justification>
-  # For variables requiring multiple sources/evidence types
   complex_variable:
     value: coded_value
-    justification: "SOURCE-ID1: 'quote supporting aspect 1.' SOURCE-ID2: quote supporting aspect 2. 2.' [Explanation of combined evidence.], etc."
+    justification: "SOURCE-ID1: 'quote supporting aspect 1.' SOURCE-ID2: quote supporting aspect 2.' [Explanation of combined evidence.], etc."
     sources: [SOURCE-ID1, SOURCE-ID2, etc.]
+</justification>
 
+For insufficient evidence cases
 <justification>
-  # For insufficient evidence cases
   insufficient_variable:
     value: "insufficient evidence"
     justification: "No direct evidence found in provided sources regarding [specific aspect]."
     sources: []
+</justification>
