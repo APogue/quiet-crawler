@@ -1,19 +1,31 @@
-AUDIT INSTRUCTIONS FOR INCIDENT CODING
+INCIDENT CODING WORKFLOW
+
+=== TASK OVERVIEW ===
+
+You are analyzing a campus incident using a structured behavioral coding system.
+
+OBJECTIVE: Code each variable in the codebook based on evidence from provided sources. Your task is to:
+1. Identify evidence relevant to the variable being coded
+2. Apply codebook variable definitions to that evidence  
+3. Select the most appropriate value for each variable
+4. Justify your coding decisions with exact source citations and explanation
+
+This is systematic evidence analysis, not interpretation or opinion.
 
 Use XML tags: <thinking>, <verification>, and <justification> to organize your work.
 
 === INITIAL SETUP (Complete Once) ===
 
 <verification>
-Confirm all inputs loaded:
-□ Audit instructions (this document)
-□ User prompt with incident ID
-□ Definitions document
-□ INC-XXX full description (incident_data.yml)
-□ All source documents
-□ Extracted policy sections (INC-XXX-policies.yml)
-□ Justification protocol document
-□ Codebook with variable protocols
+Confirm all inputs loaded and reviewed:
+□ Coding workflow (coding_workflow.txt) - complete methodology
+□ Definitions document (definitions.txt) - background information, nomenclature, meta-rules, source types
+□ INC-XXX full description (incident_message) - incident-specific summary and scope
+□ All source documents (sources/*.txt files listed in INC-XXX description) - evidence base
+□ Extracted policy sections (INC-XXX-policies.yml) - institutional rules and standards
+□ Justification protocol document (justification_protocol.txt) - evidence gathering workflow and citation format requirements
+□ Codebook (codebook.md) - variable definitions and valid values
+□ Codebook with variable protocols (codebook_with_protocols.md) - logic for applying codebook
 </verification>
 
 <thinking>
@@ -76,3 +88,5 @@ variable_name:
 === TRANSITION POINT ===
 
 [State: "Completed [VARIABLE_NAME]. Moving to next variable."]
+
+Begin coding now.

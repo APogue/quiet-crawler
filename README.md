@@ -20,8 +20,7 @@ quiet-crawler/
 │   │   ├── codebook_protocol.md              # Logic for applying codebook (e.g., disqualifying evidence checks)
 │   │   └── verifications.txt                 # Claude must confirm checklist (e.g. "I have reviewed all sources")
 │   ├── incident/                           # Per-incident user message inputs
-│   │   ├── user_prompt.txt                   # Task framing for Claude ("Here is an incident I want you to code...")
-│   │   ├── audit_instructions.txt            # Central command points to modules, then requests COT, verification and justification
+│   │   ├── coding_workflow.txt            # Central command points to modules, then requests COT, verification and justification
 │
 ├── sources/                            # Final cleaned source text files (used for incident coding)
 │   ├── ADM-001.txt
