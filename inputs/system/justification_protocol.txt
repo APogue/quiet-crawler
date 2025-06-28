@@ -7,9 +7,9 @@ Coding variable overview:
 2. Collect quotes from relevant content that are within the incident boundary and relate to the variable (regardless of initial quality)
 3. Filter quotes: select the quotes that make the strongest case for or against a particular variable value
 4. Evidence assessment: assess value appropriateness based on quotes 
-5. Select the most appropriate value as your final answer: package the quotes that serve as evidence and the reason why your value choice best fits this evidence in a justification block in yaml format. Mention how the justification satisfies coding protocol criteria where appropriate. 
+5. Select the single most suitable value as your final answer: package the quotes that serve as evidence and the reason why your value choice best fits this evidence in a justification block in yaml format. Mention how the justification satisfies coding protocol criteria where appropriate. 
 
-Evidence thresholds by variable type:
+Minimum evidence thresholds by variable type:
 - Factual variables (dates, locations): One authoritative source
 - Interpretive variables (tone, positioning): Multiple sources showing a pattern
 - Policy-based variables: Cross-reference incident facts with mutliple policy texts

@@ -29,7 +29,7 @@ Populate INCIDENT BOUNDARIES using information from the incident description onl
 <verification>
 Current variable: [VARIABLE_NAME]
 Applicable protocol: [PROTOCOL_NAME from codebook]
-Evidence collection per justification protocol
+Evidence collection uses justification protocol
 </verification>
 
 <thinking>
@@ -64,11 +64,7 @@ Pre-decision checklist:
 □ All protocol requirements were met
 </verification>
 
-=== TRANSITION POINT ===
-
-[State: "Completed [VARIABLE_NAME]. Moving to next variable."]
-
-=== FINAL OUTPUT ===
+=== JUSTIFICATION OUTPUT ===
 
 <justification>
 variable_name:
@@ -77,4 +73,6 @@ variable_name:
   sources: [SOURCE-ID, SOURCE-ID2]
 </justification>
 
-[Continue for all variables]
+=== TRANSITION POINT ===
+
+[State: "Completed [VARIABLE_NAME]. Moving to next variable."]
