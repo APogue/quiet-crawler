@@ -34,7 +34,7 @@ This codebook defines all structured and qualitative fields used in the incident
   Was the actor affiliated with either a UCLA student org or USAC?  
   → `true`, `false`  
   Mark `true` if:  
-  - An org member was quoted, claimed responsibility, hosted, or was listed as a sponsor  
+  - An org member was quoted, endorsed, depicted on social media, claimed responsibility for, or made statements in support of the specific incident
   - The org publicly endorsed or amplified the act (e.g., repost, montage, statement of support)  
   *Do not infer membership solely from an individual's participation in an org-associated protest*
 
