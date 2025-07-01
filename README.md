@@ -20,7 +20,7 @@ quiet-crawler/
 │   │   ├── codebook_protocol.md              # Logic for applying codebook (e.g., disqualifying evidence checks)
 │   │   └── verifications.txt                 # Claude must confirm checklist (e.g. "I have reviewed all sources")
 │   ├── incident/                           # Per-incident user message inputs
-│   │   ├── coding_workflow.txt            # Central command points to modules, then requests COT, verification and justification
+│   │   ├── coding_workflow.txt               # Central command points to modules, then requests COT, verification and justification
 │
 ├── sources/                            # Final cleaned source text files (used for incident coding)
 │   ├── ADM-001.txt
@@ -65,9 +65,10 @@ quiet-crawler/
 ├── api_tests/                          # Claude API test runners
 │   └── test_claude.py                    # Core call logic, logging, model selection
 │
-├── outputs/                            # Claude outputs (per-incident)
-│   ├── audit_log/                        # Full Claude response + header
-│   │   └── INC-001-audit-log.txt
+├── outputs/                            # Claude inputs and responses (per-incident)
+│   ├── audit_log/                        # Full Claude inputs (json) and responses + headers (text)
+│   │   └── INC-001-input.json
+│   │   └── INC-001-response.txt
 │   ├── coded_text/                       # Claude's structured YAML-like response (raw .txt)
 │   │   └── INC-001-coded-output.txt
 │   └── coded_output/                     # Final YAML after validation/parsing

@@ -7,7 +7,7 @@ Key functions
 -------------
 - `get_incident(incident_id)` → Dict       | fetch + validate one incident record
 - `prepare_sources_for_api(source_ids)`    | convert incident sources to "document" blocks
-- `prepare_system_documents(file_paths)`   | convert text files (codebook, protocols) to "text" blocks
+- `prepare_system_documents(file_paths)`   | convert files (codebook, protocols) to "text" blocks
 
 Notes on path handling
 ----------------------
@@ -201,7 +201,7 @@ def prepare_system_documents(file_paths: List[Path]) -> List[Dict]:
             "type": "text",
             "text": path.read_text(encoding="utf-8"),
             # Optional helper metadata—remove if you don’t need it:
-            # "title": path.name,
+            "title": path.name,
             #"cache_control": {
               #  "type": "ephemeral",
               #  "ttl": "1h"  # 1-hour cache for codebook
