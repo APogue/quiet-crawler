@@ -44,7 +44,7 @@ Codebook with integrated Claude-specific logic. Protocols are designed to ensure
 
 ---------------------
 Evidence:
-
+Quotes from provided sources that form the basis for an argument for or against a particular variable value. Quotes may also be annotated to aid in step-by-step reasoning. 
 
 Output structure:
 <thinking> 
