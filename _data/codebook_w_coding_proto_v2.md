@@ -34,20 +34,18 @@ permalink: /projects/codebook_w_coding_proto_v2/
 #### STEP 1: Evidence Collection
 - Flag ALL organizational activity found in sources
 
- YES/NO
-
 #### STEP 3: FALSE condition check
 - If NO evidence references THE SPECIFIC INCIDENT, then code `false`
 
 #### STEP 4: TRUE Condition Check
 For each piece of evidence that references the SPECIFIC INCIDENT, check against TRUE conditions and PRINT your answers:
-- **Condition A:** "Org member quoted/claimed responsibility/hosted/sponsored THE SPECIFIC INCIDENT" - YES/NO
-- **Condition B:** "Org publicly endorsed/amplified THE SPECIFIC INCIDENT" - YES/NO  
-- **Condition C:** "Org social media post depicts/shows/references THE SPECIFIC INCIDENT" - YES/NO
-- **Condition D:** "Org claimed responsibility for THE SPECIFIC INCIDENT after the fact" - YES/NO
-- **Condition E:** "Org made statements supporting THE SPECIFIC INCIDENT specifically" - YES/NO
+- **Condition A:** "Org (or org member) hosted/sponsored THE SPECIFIC INCIDENT" - YES/NO
+- **Condition B:** "Org (or org member) publicly endorsed/officially associated with THE SPECIFIC INCIDENT" - YES/NO  
+- **Condition C:** "Org (or org member) amplified (social media post depicts/shows/references) THE SPECIFIC INCIDENT" - YES/NO
+- **Condition D:** "Org (or org member) claimed responsibility for THE SPECIFIC INCIDENT after the fact" - YES/NO
+- **Condition E:** "Org (or org member) made statements supporting THE SPECIFIC INCIDENT specifically" - YES/NO
 
-- **REMEMBER:** Endorsement != 1. incident occurred AT org event but no separate org support for THE SPECIFIC INCIDENT or 2. org supported general event but not THE SPECIFIC INCIDENT
+- **REMEMBER:** True condition != 1. incident occurred AT org event but no separate org support for THE SPECIFIC INCIDENT or 2. org supported general event but not THE SPECIFIC INCIDENT; participation by an actor in an org-associated protest != org membership. 
 
 #### STEP 5: Final Decision
 - If NO TRUE conditions = YES, then code `false`

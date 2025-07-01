@@ -43,6 +43,8 @@ Codebook with protocol:
 Codebook with integrated Claude-specific logic. Protocols are designed to ensure best practices methods are used in coding incidents. 
 
 ---------------------
+Evidence:
+
 
 Output structure:
 <thinking> 

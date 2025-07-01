@@ -34,15 +34,14 @@ This codebook defines all structured and qualitative fields used in the incident
   Was the actor affiliated with either a UCLA student org or USAC?  
   → `true`, `false`  
   Mark `true` if:  
-  - An org member was quoted, endorsed, depicted on social media, claimed responsibility for, or made statements in support of the specific incident
-  - The org publicly endorsed or amplified the act (e.g., repost, montage, statement of support)  
-  *Do not infer membership solely from an individual's participation in an org-associated protest*
+  - An org (or org member) hosted, endorsed, amplified (e.g., social media post or repost), claimed responsibility for, or made statements in support of the specific incident
+  *Do not infer org membership solely from an actor's participation in an org-associated protest*
 
 - **`actor_student`**  
   Was the actor a student at UCLA?     
   → `true`, `false`  
   Mark `true` if  
-  - There is no assertion of non-affiliation by the Daily Bruin or 3rd party media. It is not necessary to find evidence in any source otherwise, if there is no assertion of non-affiliation, that is sufficient. 
+  - There is no assertion of non-affiliation by the Daily Bruin or 3rd party media. It is not necessary to find evidence in any source otherwise, no assertion of non-affiliation is sufficient. 
 
 ---
 
