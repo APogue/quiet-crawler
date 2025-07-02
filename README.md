@@ -10,39 +10,65 @@ This repository supports the Claude API-based incident analysis workflow. It inc
 ```
 .
 quiet-crawler/
-│
-├── inputs/                             # Claude API prompt inputs (modular, editable)
+├── main.py                           # Master runner: executes both Pass 1 and Pass 2
+├── pipeline/                         # Modular task scripts
+│   ├── run_pass1_condense_policy.py   # Standalone: condense PHIL-/POL- policy source files
+│   └── run_pass2_code_incident.py     # Standalone: run full incident coding via Claude
+├── claude_interface/                   # Claude interface layer
+│   └── client.py                       # One-shot Claude runner (used by all other scripts)
+├── sources/                            # Final cleaned source text files (used for incident coding)
+│   ├── ADM-001.txt
+│   ├── DB-001.txt                       # DB sources are a chosen subset (by incident criteria) of scraped articles
+│   ├── SOC-001.txt                      # Each SOC is one reddit/IG/Twitter post (images are post-processed to txt)
+│   └── images/
+│       └── SOC-001.png                  # Pre-processed image source files
+├── _data/                            # Structured metadata and configuration
+│   ├── incident_data.yml             # Central list of all incident records
+│   ├── source_master.yml             # Maps source IDs to files and descriptions
+│   └── variable_data.yml             # YAML schema of all variable fields
+├── inputs/                            # Claude API prompt inputs (modular, editable)
 │   ├── system/                             # System-level configuration (shared across all incidents)
 │   │   ├── system_role.txt                   # Claude's persona (e.g., "You are an evidence auditor...")
 │   │   ├── justification_protocol.txt        # How to extract and attribute quotes and output justification block (YAML format)
 │   │   ├── definitions.txt                   # Incident boundaries, source types, codebook meta-rules
 │   │   ├── codebook.md                       # Variable dictionary with descriptions and values
 │   │   ├── codebook_protocol.md              # Logic for applying codebook (e.g., disqualifying evidence checks)
-│   │   └── verifications.txt                 # Claude must confirm checklist (e.g. "I have reviewed all sources")
-│   ├── incident/                           # Per-incident user message inputs
-│   │   ├── coding_workflow.txt               # Central command points to modules, then requests COT, verification and justification
-│
-├── sources/                            # Final cleaned source text files (used for incident coding)
-│   ├── ADM-001.txt
-│   ├── DB-001.txt                       # DB sources are a chosen subset (by incident criteria) of scraped articles
-│   ├── SOC-001.txt                      # Each SOC is one reddit/IG/Twitter post (images are post-processed to txt)
-│   └── images/
-│       └── SOC-001.png                   # Pre-processed image source files
-│
-├── _data/                              # Manually curated metadata for writing + visualization
-│   ├── codebook.md                       # Public-facing variable definitions
-│   ├── codebook_w_coding_proto_v2.md     # Codebook with integrated Claude-specific logic
-│   ├── source_master.yml                 # Master list of all sources with tags + file mapping
-│   ├── variable_data.yml                 # Structured schema for all coding variables
-│   └── incident_data.yml                 # Central list of all incident records
-│
+│   │   ├── verifications.txt                 # Claude must confirm checklist (e.g. "I have reviewed all sources")
+│   │   ├── codebook.md                       # Public-facing variable definitions
+│   │   └── codebook_w_coding_proto_v2.md     # Codebook with integrated Claude-specific logic
+│   └── incident/                           # Per-incident user message inputs
+│       └── coding_workflow.txt               # Central command points to modules, then requests COT, verification and justification
+├── outputs/                          # All Claude-generated outputs
+│   ├── audit_log/                    # Full Claude input/output logs (for both passes)
+│   │   ├── POL-003-condense-input.json
+│   │   ├── POL-003-condense-output.txt
+│   │   ├── INC-001-input.json
+│   │   └── INC-001-response.txt
+│   ├── condensation/                 # Claude-processed policy summaries
+│   │   ├── condensed_POL-003.txt
+│   │   └── condensed_PHIL-002.txt
+│   ├── coded_text/                    # Raw YAML-like output from Claude before validation
+│   │   └── INC-001-coded-output.txt
+│   └── coded_output/                  # Final parsed and validated YAML output
+│       └── INC-001-coded-output.yml
+├── utils/                            # Shared utilities
+│   ├── doc_loader.py                 # Load incident metadata, sources, and system files
+│   ├── preprocess_payload.py         # Construct Claude input payloads (messages + docs)
+│   ├── logger.py                     # Save inputs and outputs for traceability
+│   ├── claude_api.py                 # Low-level Claude API client (raw HTTP or SDK call)
+│   ├── reddit_json_to_txt_converter.py   # Flattens scraped Reddit data into clean .txt
+│   └── txt_to_yaml_converter.py          # Converts Claude text output to structured YAML
+├── scrapers/                           # Web scraping logic
+│   ├── __init__.py
+│   ├── scraper_base.py
+│   ├── reddit_scraper.py
+│   └── daily_bruin_scraper.py
 ├── scraper_inputs/                     # Scraping input config
 │   ├── daily_bruin/
 │   │   ├── universal_keywords.txt
 │   │   └── universal_incident_rule.md
 │   └── reddit/
 │       └── INC-001-reddit-urls.json
-│
 ├── scraper_outputs/                    # Raw scraped data before cleaning
 │   ├── raw_text/
 │   │   ├── DB-raw-001.txt              # All scraped DB articles
@@ -50,34 +76,8 @@ quiet-crawler/
 │   └── json/
 │       ├── DB-raw-001.json             
 │       └── INC-001_reddit_scraped.json # Dicts with metadata and comments
-│
-├── scrapers/                           # Web scraping logic
-│   ├── __init__.py
-│   ├── scraper_base.py
-│   ├── reddit_scraper.py
-│   └── daily_bruin_scraper.py
-│
-├── utils/                              # Helper scripts and converters
-│   ├── doc_loader.py                     # Assembles (some, all?) Claude API messages from input folders
-│   ├── reddit_json_to_txt_converter.py   # Flattens scraped Reddit data into clean .txt
-│   └── txt_to_yaml_converter.py          # Converts Claude text output to structured YAML
-│
-├── api_tests/                          # Claude API test runners
-│   └── test_claude.py                    # Core call logic, logging, model selection
-│
-├── outputs/                            # Claude inputs and responses (per-incident)
-│   ├── audit_log/                        # Full Claude inputs (json) and responses + headers (text)
-│   │   └── INC-001-input.json
-│   │   └── INC-001-response.txt
-│   ├── coded_text/                       # Claude's structured YAML-like response (raw .txt)
-│   │   └── INC-001-coded-output.txt
-│   └── coded_output/                     # Final YAML after validation/parsing
-│       └── INC-001-coded-output.yml
-│
-├── main.py                             # Entry point for incident processing pipeline
 ├── README.md                           # Project overview + file usage
 └── venv/                               # Python virtual environment
-
 ```
 ---
 
