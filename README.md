@@ -41,7 +41,7 @@ quiet-crawler/
 ├── outputs/                          # All Claude-generated outputs
 │   ├── audit_log/                    # Full Claude input/output logs (for both passes)
 │   │   ├── POL-003-condense-input.json
-│   │   ├── POL-003-condense-output.txt
+│   │   ├── PHIL-002-condense-output.txt
 │   │   ├── INC-001-input.json
 │   │   └── INC-001-response.txt
 │   ├── condensation/                 # Claude-processed policy summaries
@@ -52,6 +52,7 @@ quiet-crawler/
 │   └── coded_output/                  # Final parsed and validated YAML output
 │       └── INC-001-coded-output.yml
 ├── utils/                            # Shared utilities
+│   ├── __init__.py
 │   ├── doc_loader.py                 # Load incident metadata, sources, and system files
 │   ├── preprocess_payload.py         # Construct Claude input payloads (messages + docs)
 │   ├── logger.py                     # Save inputs and outputs for traceability
@@ -60,12 +61,11 @@ quiet-crawler/
 │   └── txt_to_yaml_converter.py          # Converts Claude text output to structured YAML
 ├── scrapers/                           # Web scraping logic
 │   ├── __init__.py
-│   ├── scraper_base.py
 │   ├── reddit_scraper.py
 │   └── daily_bruin_scraper.py
 ├── scraper_inputs/                     # Scraping input config
 │   ├── daily_bruin/
-│   │   ├── universal_keywords.txt
+│   │   ├── universal_keywords.yml
 │   │   └── universal_incident_rule.md
 │   └── reddit/
 │       └── INC-001-reddit-urls.json
