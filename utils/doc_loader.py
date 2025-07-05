@@ -1,23 +1,25 @@
 # doc_loader.py
 """
+Scoped to raw sources and incident metatdata loading
+====================================================
 Unified helpers for loading incident *sources* **and** static *system* documents
 into Claude‑compatible payloads.
 
 Key functions
 -------------
-- `get_incident(incident_id)` → Dict       | fetch + validate one incident record
-- `prepare_sources_for_api(source_ids)`    | convert incident sources to "document" blocks
-- `prepare_system_documents(file_paths)`   | convert files (codebook, protocols) to "text" blocks
+- get_incident(incident_id) → Dict       | fetch + validate one incident record
+- prepare_sources_for_api(source_ids)    | convert incident sources to "document" blocks
+- prepare_system_documents(file_paths)   | convert files (codebook, protocols) to "text" blocks
 
 Notes on path handling
 ----------------------
-* Always build file paths with **absolute** `Path` objects – easiest is
-  `BASE_DIR / "subdir" / "file.ext"`.  This avoids surprises when the
+* Always build file paths with **absolute** Path objects – easiest is
+  BASE_DIR / "subdir" / "file.ext".  This avoids surprises when the
   working directory changes (e.g. when running scripts from different
-  places or via `python -m`).
+  places or via python -m).
 * The helper functions assume UTF‑8 encoded text files.
 
-This module supersedes the older `source_reader.py` so that the utilities
+This module supersedes the older source_reader.py so that the utilities
 cover both incident sources **and** static documentation.
 """
 
@@ -51,7 +53,7 @@ def _incident_table() -> List[Dict]:
         Parsed list of incident‑record dictionaries.
 
     The cache is cleared automatically when the interpreter exits.
-    Call `_incident_table.cache_clear()` manually if the YAML file
+    Call _incident_table.cache_clear() manually if the YAML file
     is edited during runtime and needs to be re‑loaded.
     """
     try:
@@ -74,7 +76,7 @@ def _incident_table() -> List[Dict]:
 
 def get_incident(incident_id: str) -> Dict:
     """Return the incident record for *incident_id* and verify that every
-    referenced source file exists in the `sources/` directory.
+    referenced source file exists in the sources/ directory.
 
     Raises
     ------
@@ -132,7 +134,7 @@ def load_source_content(source_id: str) -> str:
 
 
 def prepare_sources_for_api(source_ids: List[str]) -> List[Dict]:
-    """Convert incident *source* IDs into Claude‑compatible `document` blocks.
+    """Convert incident *source* IDs into Claude‑compatible document blocks.
 
     Each document dict looks like:
         {
@@ -176,12 +178,12 @@ def prepare_sources_for_api(source_ids: List[str]) -> List[Dict]:
 
 
 def prepare_system_documents(file_paths: List[Path]) -> List[Dict]:
-    """Convert plaintext / Markdown files into Claude‑compatible `text` blocks.
+    """Convert plaintext / Markdown files into Claude‑compatible text blocks.
 
     **Path advice**
     --------------
-    Callers should pass **absolute** `Path` objects – or build them with
-    `BASE_DIR / "..."` – to avoid surprises if the current working
+    Callers should pass **absolute** Path objects – or build them with
+    BASE_DIR / "..." – to avoid surprises if the current working
     directory changes.
 
     Parameters
@@ -194,7 +196,7 @@ def prepare_system_documents(file_paths: List[Path]) -> List[Dict]:
     -------
     List[Dict]
         List of Claude‑ready content objects, each of the form
-        `{ "type": "text", "text": "<file contents>" }`.
+        { "type": "text", "text": "<file contents>" }.
     """
     return [
         {

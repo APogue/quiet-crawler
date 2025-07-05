@@ -39,14 +39,13 @@ quiet-crawler/
 │   └── incident/                           # Per-incident user message inputs
 │       └── coding_workflow.txt               # Central command points to modules, then requests COT, verification and justification
 ├── outputs/                          # All Claude-generated outputs
-│   ├── audit_log/                    # Full Claude input/output logs (for both passes)
-│   │   ├── POL-003-condense-input.json
-│   │   ├── PHIL-002-condense-output.txt
+│   ├── audit_log/                    # Full Claude input/output logs (pass 1 + pass 2)
+│   │   ├── INC-001-policy-input.json
+│   │   ├── INC-001-policy-response.txt
 │   │   ├── INC-001-input.json
 │   │   └── INC-001-response.txt
 │   ├── condensation/                 # Claude-processed policy summaries
-│   │   ├── condensed_POL-003.txt
-│   │   └── condensed_PHIL-002.txt
+│   │   └── INC-001-policy-output.txt
 │   ├── coded_text/                    # Raw YAML-like output from Claude before validation
 │   │   └── INC-001-coded-output.txt
 │   └── coded_output/                  # Final parsed and validated YAML output
