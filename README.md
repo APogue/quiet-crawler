@@ -15,7 +15,7 @@ quiet-crawler/
 │   ├── run_pass1_condense_policy.py   # Standalone: condense PHIL-/POL- policy source files
 │   └── run_pass2_code_incident.py     # Standalone: run full incident coding via Claude
 ├── claude_interface/                   # Claude interface layer
-│   └── client.py                       # One-shot Claude runner (used by all other scripts)
+│   └── client.py                       # One-shot Claude runner (used by all other scripts, raw HTTP or SDK call)
 ├── sources/                            # Final cleaned source text files (used for incident coding)
 │   ├── ADM-001.txt
 │   ├── DB-001.txt                       # DB sources are a chosen subset (by incident criteria) of scraped articles
@@ -46,16 +46,16 @@ quiet-crawler/
 │   │   └── INC-001-response.txt
 │   ├── condensation/                 # Claude-processed policy summaries
 │   │   └── INC-001-policy-output.txt
-│   ├── coded_text/                    # Raw YAML-like output from Claude before validation
-│   │   └── INC-001-coded-output.txt
-│   └── coded_output/                  # Final parsed and validated YAML output
-│       └── INC-001-coded-output.yml
+│   ├── coded_raw/                     # Claude YAML + justifications (before validation)
+│   │   └── INC-001-justified-output.yml
+│   └── coded_values/                  # Final parsed and validated YAML output (values only)
+│       └── INC-001-output.yml  
 ├── utils/                            # Shared utilities
 │   ├── __init__.py
 │   ├── doc_loader.py                 # Load incident metadata, sources, and system files
 │   ├── preprocess_payload.py         # Construct Claude input payloads (messages + docs)
 │   ├── logger.py                     # Save inputs and outputs for traceability
-│   ├── claude_api.py                 # Low-level Claude API client (raw HTTP or SDK call)
+│   ├── test_claude.py                # Handles Claude interaction during testing phase
 │   ├── reddit_json_to_txt_converter.py   # Flattens scraped Reddit data into clean .txt
 │   └── txt_to_yaml_converter.py          # Converts Claude text output to structured YAML
 ├── scrapers/                           # Web scraping logic
