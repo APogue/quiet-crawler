@@ -25,7 +25,8 @@ from datetime import datetime
 from utils import logger
 
 try:
-    import claude_api  # Must live at repo root
+    from claude_interface import claude_api
+    # Import the Claude API client from claude_interface package
 except ModuleNotFoundError as exc:  # pragma: no cover
     raise ImportError(
         "claude_api.py not found in PYTHONPATH – run scripts from repo root."
