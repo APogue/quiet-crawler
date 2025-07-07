@@ -70,13 +70,14 @@ def send_prompt(payload: Dict[str, Any], *, dry_run: bool = False) -> str | None
 
     try:
         result: Dict[str, Any] = claude_api.send(payload)
+        output_text = result.get("completion", json.dumps(result, indent=2))
     except Exception:
         tb = traceback.format_exc()
         logger.log_response(run_name, f"[ERROR]\n{tb}", payload=payload)
         raise
 
-    logger.log_response(run_name, result, payload=payload)
-    return result.get("completion")
+    logger.log_response(run_name, output_text, payload=payload)
+    return output_text
 
 
 # ---------------------------------------------------------------------------

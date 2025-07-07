@@ -62,23 +62,13 @@ def log_payload(run_name: str, payload: Dict[str, Any]) -> Path:
 
 def log_response(
     run_name: str,
-    raw_response: str | Dict[str, Any],
+    output_text: str,
     *,
     payload: Dict[str, Any] | None = None,
 ) -> Path:
+
     """Write a concise human‑readable audit file with metadata + output."""
     path = _build_filename(run_name, "response", "txt")
-
-    # ------------------------------------------------------------------
-    # Extract completion text with graceful fallback
-    # ------------------------------------------------------------------
-    if isinstance(raw_response, dict):
-        completion_text = raw_response.get("completion")
-        if completion_text is None:
-            # Pretty‑print full dict if no dedicated `completion` key
-            completion_text = json.dumps(raw_response, ensure_ascii=False, indent=2)
-    else:
-        completion_text = str(raw_response)
 
     # ------------------------------------------------------------------
     # Extract metadata from payload (if supplied)
@@ -101,7 +91,7 @@ def log_response(
         f.write(f"citations_enabled: {metadata['citations_enabled']}\n")
         f.write(f"run_time: {_now()}\n")
         f.write("-" * 20 + "\n\n")
-        f.write(str(completion_text).strip())
+        f.write(output_text.strip())
         f.write("\n\n")
         f.write(f"(See input payload: {str(_build_filename(run_name, 'input', 'json'))})\n")
 
