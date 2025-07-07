@@ -15,7 +15,8 @@ quiet-crawler/
 │   ├── run_pass1_condense_policy.py   # Standalone: condense PHIL-/POL- policy source files
 │   └── run_pass2_code_incident.py     # Standalone: run full incident coding via Claude
 ├── claude_interface/                   # Claude interface layer
-│   └── client.py                       # One-shot Claude runner (used by all other scripts, raw HTTP or SDK call)
+│   ├── __init__.py
+│   └── claude_api.py                       # One-shot Claude runner (used by all other scripts, raw HTTP or SDK call)
 ├── sources/                            # Final cleaned source text files (used for incident coding)
 │   ├── ADM-001.txt
 │   ├── DB-001.txt                       # DB sources are a chosen subset (by incident criteria) of scraped articles
