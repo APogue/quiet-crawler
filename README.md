@@ -11,6 +11,7 @@ This repository supports the Claude API-based incident analysis workflow. It inc
 .
 quiet-crawler/
 ├── main.py                           # Master runner: executes both Pass 1 and Pass 2
+├── run_pass1.sh                      # Test script
 ├── pipeline/                         # Modular task scripts
 │   ├── run_pass1_condense_policy.py   # Standalone: condense PHIL-/POL- policy source files
 │   └── run_pass2_code_incident.py     # Standalone: run full incident coding via Claude
