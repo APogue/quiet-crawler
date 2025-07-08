@@ -19,7 +19,7 @@ Generates two files per run using a run-specific identifier:
 from __future__ import annotations
 
 from typing import Any, Dict
-import traceback
+import traceback, json
 from datetime import datetime
 
 from utils import logger
@@ -80,7 +80,7 @@ def send_prompt(payload: Dict[str, Any], *, dry_run: bool = False) -> str | None
         raise
 
     logger.log_response(run_name, output_text, payload=payload)
-    return output_text
+    return output_text, run_name 
 
 
 # ---------------------------------------------------------------------------

@@ -1,102 +1,112 @@
-# ============================================================
-# run_pass1_condense_policy.py
-# ------------------------------------------------------------
+#!/usr/bin/env python
 """
-Pipeline ‑ Pass 1: Condense a single policy / guidance document
-================================================================
+run_pass1_condense_policy.py
+============================
 
-This runner takes a *policy source ID* (e.g. "POL-017" or "PHIL-002")
-from the `sources/` directory, sends it to Claude with the
-**policy‑condense prompt** (see `utils.preprocess_payload.build_policy_condense_prompt`),
-and writes two audit artefacts:
+Condense a single policy source (POL-### or PHIL-###) for a given
+incident and save the summary into `outputs/condensation/<INC-ID>/`.
 
-1. `outputs/audit_log/<run_name>-input.json`    – full payload
-2. `outputs/audit_log/<run_name>-response.txt` – Claude summary text
+The file name is built from the *exact* `run_name` returned by
+`utils.test_claude.send_prompt()`, ensuring it lines up with the
+matching input / response audit-log files :
 
-It is intentionally single‑document / single‑run so that you can inspect
-and tweak the prompt until condensation output is exactly what you need
-for Pass 2. Later, you can batch‑wrap this script or extend it to loop
-through all POL‑/PHIL‑ source IDs.
+    outputs/audit_log/INC-001/INC-001-policy-POL-003-input.json
+    outputs/audit_log/INC-001/INC-001-policy-POL-003-response.txt
+    outputs/condensation/INC-001/INC-001-policy-POL-003-condensed.txt
 
-Example
--------
-```bash
-python -m pipeline.run_pass1_condense_policy POL-003 --model claude-sonnet-4-20250514
-```
-
-CLI Arguments
--------------
-`policy_id` (positional)   – Source ID to process (must exist in `sources/`)
-`--model`                  – Claude model name (default: claude-sonnet-4-20250514)
-`--dry`                    – Build & log payload but *do not* call Claude
+Usage
+-----
+python -m pipeline.run_pass1_condense_policy \
+       --incident-id INC-001 \
+       --source-id  POL-003 \
+       --model      claude-3-opus
+       [--dry-run]          # skips the API call, logs input only
 """
 
 from __future__ import annotations
 
 import argparse
-import json
+import sys
 from pathlib import Path
-from typing import Dict, Any
 
-from utils.preprocess_payload import build_policy_condense_prompt
-from utils import test_claude  # Wrapper that logs + sends
+from utils import preprocess_payload, test_claude
+from utils.path_manager import get_condensation_dir
+
 
 # ---------------------------------------------------------------------------
-# CLI helpers
+# Argument parsing
 # ---------------------------------------------------------------------------
-# this needs to be updated to accept an incident ID and a policy ID
-def _parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Condense one policy document with Claude")
-    parser.add_argument("policy_id", help="Source ID of the policy (e.g. POL-017)")
-    parser.add_argument(
-        "--model",
-        default="claude-sonnet-4-20250514",
-        help="Claude model name (default: %(default)s)",
+
+def _parse_args() -> argparse.Namespace:  # pragma: no cover
+    parser = argparse.ArgumentParser(
+        prog="run_pass1_condense_policy",
+        description="Condense a single POL-/PHIL- policy file via Claude.",
     )
     parser.add_argument(
-        "--dry",
+        "-i", "--incident-id",
+        required=True,
+        help="Incident identifier, e.g. INC-001",
+    )
+    parser.add_argument(
+        "-s", "--source-id",
+        required=True,
+        help="Policy source ID, e.g. POL-003 or PHIL-005",
+    )
+    parser.add_argument(
+        "--model",
+        default="claude-3-opus",
+        help="Claude model name (default: claude-3-opus)",
+    )
+    parser.add_argument(
+        "--dry-run",
         action="store_true",
-        help="Build and log payload but skip Claude API call",
+        help="Log the payload but do NOT send the request to Claude.",
     )
     return parser.parse_args()
 
+
 # ---------------------------------------------------------------------------
-# Main runner
+# Main logic
 # ---------------------------------------------------------------------------
 
-def main():
+def main() -> None:  # pragma: no cover
     args = _parse_args()
 
-    # ---------- 1. Build messages array ----------
-    messages = build_policy_condense_prompt(args.policy_id)
-
-    # Claude ChatCompletion payload structure
-    # • Pass 1 does *not* attach external documents; everything is inline
-    payload: Dict[str, Any] = {
+    # 1️⃣  Build Claude payload ------------------------------------------------
+    messages = preprocess_payload.build_policy_condense_prompt(args.source_id)
+    payload: dict = {
         "model": args.model,
         "messages": messages,
-        "max_tokens": 4096,  # Tweaked for long policies
-        # Metadata is passed through to logger for file‑naming
         "metadata": {
-            "incident_id": args.policy_id,  # Re‑using for convenience
-            "phase": "policy-condense",
-            "thinking_mode": "chain_of_thought",  # Optional
-            "citations_enabled": False,
+            "incident_id": args.incident_id,
+            "phase": f"policy-{args.source_id}",
         },
     }
 
-    # ---------- 2. Send (or dry‑run) ----------
-    summary_text = test_claude.send_prompt(payload, dry_run=args.dry)
-    # what your asking is for test_claude not to only return the summary text, but to also return the run name so you can create a _build_filename like in the logger but here (using the unique suffix)
+    # 2️⃣  Send to Claude (or skip if --dry-run) -------------------------------
+    completion, run_name = test_claude.send_prompt(
+        payload,
+        dry_run=args.dry_run,
+    )
 
-    if args.dry:
-        print("[DRY‑RUN] Payload logged; Claude call skipped.")
-    else:
-        print("\n=== Claude Condensation Output ===\n")
-        # Guard: send_prompt returns None when dry_run=True
-        print(summary_text or "<empty response>")
+    # Dry-run stops here (payload + run_name already logged by test_claude)
+    if args.dry_run:
+        print("[DRY-RUN] Payload logged – no API request sent.")
+        print(f"[DRY-RUN] Would have written condensation file for run: {run_name}")
+        return
+
+    # 3️⃣  Persist the condensed summary --------------------------------------
+    condensation_dir: Path = get_condensation_dir(args.incident_id)
+    out_path: Path = condensation_dir / f"{run_name}-condensed.txt"
+    out_path.write_text(completion, encoding="utf-8")
+
+    print(f"[OK] Condensed summary written → {out_path.relative_to(Path.cwd())}")
 
 
 # ---------------------------------------------------------------------------
-if __name__ == "__main__":
-    main()
+
+if __name__ == "__main__":  # pragma: no cover
+    try:
+        main()
+    except KeyboardInterrupt:
+        sys.exit("\nInterrupted by user")
