@@ -34,10 +34,7 @@ import yaml
 # Path configuration
 # -----------------------------------------------------------
 # Resolve BASE_DIR one level up from this file (…/quiet-crawler/)
-BASE_DIR: Path = Path(__file__).resolve().parent.parent
-
-SOURCES_DIR: Path = BASE_DIR / "sources"
-INCIDENT_DATA_PATH: Path = BASE_DIR / "_data" / "incident_data.yml"
+from utils.path_manager import BASE_DIR, SOURCES_DIR, INCIDENT_DATA_PATH
 
 # ---------------------------------------------------------------------------
 # Internal helpers

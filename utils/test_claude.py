@@ -38,6 +38,8 @@ except ModuleNotFoundError as exc:  # pragma: no cover
 
 def generate_run_name(payload: dict) -> str:
     incident_id = payload.get("metadata", {}).get("incident_id", "unknown")
+    if not incident_id:
+        raise ValueError("Missing `incident_id` in payload metadata – cannot log output.")
     phase = payload.get("metadata", {}).get("phase", "run")
     model = payload.get("model", "claude-unknown").replace("claude-", "").replace("3-", "").replace("_", "-")
     timestamp = datetime.utcnow().strftime("%Y%m%dT%H%MZ")

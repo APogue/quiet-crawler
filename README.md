@@ -41,12 +41,14 @@ quiet-crawler/
 │       └── coding_workflow.txt               # Central command points to modules, then requests COT, verification and justification
 ├── outputs/                          # All Claude-generated outputs
 │   ├── audit_log/                    # Full Claude input/output logs (pass 1 + pass 2)
-│   │   ├── INC-001-policy-input.json
-│   │   ├── INC-001-policy-response.txt
-│   │   ├── INC-001-input.json
-│   │   └── INC-001-response.txt
+│   │   └── INC-001/     
+│   │       ├── INC-001-policy-POL-003-input.json
+│   │       ├── INC-001-policy-POL-003-response.txt
+│   │       ├── INC-001-input.json
+│   │       └── INC-001-response.txt
 │   ├── condensation/                 # Claude-processed policy summaries
-│   │   └── INC-001-policy-output.txt
+│   │   └── INC-001/
+│   │       └── INC-001-policy-POL-003-condensed.txt
 │   ├── coded_raw/                     # Claude YAML + justifications (before validation)
 │   │   └── INC-001-justified-output.yml
 │   └── coded_values/                  # Final parsed and validated YAML output (values only)
@@ -55,6 +57,7 @@ quiet-crawler/
 │   ├── __init__.py
 │   ├── doc_loader.py                 # Load incident metadata, sources, and system files
 │   ├── preprocess_payload.py         # Construct Claude input payloads (messages + docs)
+│   ├── path_manager.py               # generate file paths 
 │   ├── logger.py                     # Save inputs and outputs for traceability
 │   ├── test_claude.py                # Handles Claude interaction during testing phase
 │   ├── reddit_json_to_txt_converter.py   # Flattens scraped Reddit data into clean .txt

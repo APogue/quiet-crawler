@@ -22,14 +22,7 @@ import datetime as _dt
 from pathlib import Path
 from typing import Any, Dict
 
-from utils.doc_loader import BASE_DIR  # Project root discovered by doc_loader
-
-# ---------------------------------------------------------------------------
-# Configuration
-# ---------------------------------------------------------------------------
-
-AUDIT_DIR: Path = BASE_DIR / "outputs" / "audit_log"
-AUDIT_DIR.mkdir(parents=True, exist_ok=True)
+from utils.path_manager import get_audit_log_dir
 
 _TIMESTAMP_FMT = "%Y-%m-%d %H:%M UTC"
 
@@ -42,10 +35,11 @@ def _now() -> str:
     return _dt.datetime.utcnow().strftime(_TIMESTAMP_FMT)
 
 
-def _build_filename(run_name: str, suffix: str, ext: str) -> Path:
-    """Return `outputs/audit_log/<run_name>-<suffix>.<ext>`."""
+def _build_filename(incident_id: str, run_name: str, suffix: str, ext: str) -> Path:
+    """Return `outputs/audit_log/incident_id/<run_name>-<suffix>.<ext>`."""
+    dir_path = get_audit_log_dir(incident_id)
     safe_name = run_name.replace(" ", "_")
-    return AUDIT_DIR / f"{safe_name}-{suffix}.{ext}"
+    return dir_path / f"{safe_name}-{suffix}.{ext}"
 
 # ---------------------------------------------------------------------------
 # Public API
@@ -53,7 +47,10 @@ def _build_filename(run_name: str, suffix: str, ext: str) -> Path:
 
 def log_payload(run_name: str, payload: Dict[str, Any]) -> Path:
     """Persist full input payload as prettified JSON."""
-    path = _build_filename(run_name, "input", "json")
+    incident_id = payload.get("metadata", {}).get("incident_id", "unknown")
+    if not incident_id:
+        raise ValueError("Missing `incident_id` in payload metadata – cannot log output.")
+    path = _build_filename(incident_id, run_name, "input", "json")
     with path.open("w", encoding="utf-8") as f:
         json.dump(payload, f, ensure_ascii=False, indent=2)
         f.write("\n")
@@ -68,7 +65,10 @@ def log_response(
 ) -> Path:
 
     """Write a concise human‑readable audit file with metadata + output."""
-    path = _build_filename(run_name, "response", "txt")
+    incident_id = payload.get("metadata", {}).get("incident_id", "unknown")
+    if not incident_id:
+        raise ValueError("Missing `incident_id` in payload metadata – cannot log output.")
+    path = _build_filename(incident_id, run_name, "response", "txt")
 
     # ------------------------------------------------------------------
     # Extract metadata from payload (if supplied)
@@ -93,7 +93,7 @@ def log_response(
         f.write("-" * 20 + "\n\n")
         f.write(output_text.strip())
         f.write("\n\n")
-        f.write(f"(See input payload: {str(_build_filename(run_name, 'input', 'json'))})\n")
+        f.write(f"(See input payload: {str(_build_filename(incident_id, run_name, 'input', 'json'))})\n")
 
     return path
 

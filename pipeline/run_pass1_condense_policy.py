@@ -44,7 +44,7 @@ from utils import test_claude  # Wrapper that logs + sends
 # ---------------------------------------------------------------------------
 # CLI helpers
 # ---------------------------------------------------------------------------
-
+# this needs to be updated to accept an incident ID and a policy ID
 def _parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Condense one policy document with Claude")
     parser.add_argument("policy_id", help="Source ID of the policy (e.g. POL-017)")
