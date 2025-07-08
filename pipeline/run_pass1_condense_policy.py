@@ -87,6 +87,7 @@ def main():
 
     # ---------- 2. Send (or dry‑run) ----------
     summary_text = test_claude.send_prompt(payload, dry_run=args.dry)
+    # what your asking is for test_claude not to only return the summary text, but to also return the run name so you can create a _build_filename like in the logger but here (using the unique suffix)
 
     if args.dry:
         print("[DRY‑RUN] Payload logged; Claude call skipped.")
