@@ -49,7 +49,7 @@ def generate_run_name(payload: dict) -> str:
 # Public interface
 # ---------------------------------------------------------------------------
 
-def send_prompt(payload: Dict[str, Any], *, dry_run: bool = False) -> str | None:
+def send_prompt(payload: Dict[str, Any], *, dry_run: bool = False) -> tuple[str | None, str]:
     """
     Main runner: logs payload, sends to Claude (unless dry), logs response.
 
@@ -69,7 +69,7 @@ def send_prompt(payload: Dict[str, Any], *, dry_run: bool = False) -> str | None
     logger.log_payload(run_name, payload)
 
     if dry_run:
-        return None
+        return None, run_name
 
     try:
         result: Dict[str, Any] = claude_api.send(payload)

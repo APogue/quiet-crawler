@@ -61,7 +61,7 @@ def log_response(
     run_name: str,
     output_text: str,
     *,
-    payload: Dict[str, Any] | None = None,
+    payload: Dict[str, Any],
 ) -> Path:
 
     """Write a concise human‑readable audit file with metadata + output."""
@@ -74,10 +74,10 @@ def log_response(
     # Extract metadata from payload (if supplied)
     # ------------------------------------------------------------------
     metadata = {
-        "incident_id": payload.get("metadata", {}).get("incident_id") if payload else "<unknown>",
-        "model": payload.get("model") if payload else "<unknown>",
-        "thinking_mode": payload.get("metadata", {}).get("thinking_mode") if payload else "<unknown>",
-        "citations_enabled": payload.get("metadata", {}).get("citations_enabled") if payload else "<unknown>",
+        "incident_id": payload.get("metadata", {}).get("incident_id"),
+        "model": payload.get("model"),
+        "thinking_mode": payload.get("metadata", {}).get("thinking_mode"),
+        "citations_enabled": payload.get("metadata", {}).get("citations_enabled"),
     }
 
     # ------------------------------------------------------------------
