@@ -73,9 +73,12 @@ def main() -> None:  # pragma: no cover
     args = _parse_args()
 
     # 1️⃣  Build Claude payload ------------------------------------------------
-    messages = preprocess_payload.build_policy_condense_prompt(args.source_id)
+    system, messages = preprocess_payload.build_policy_condense_prompt(args.source_id)
     payload: dict = {
         "model": args.model,
+        "max_tokens": 3000,
+        "temperature": 0.2,  # conservative, focused on structure
+        "system": system,
         "messages": messages,
         "metadata": {
             "incident_id": args.incident_id,
