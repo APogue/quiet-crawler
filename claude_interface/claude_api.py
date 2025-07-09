@@ -29,18 +29,7 @@ except ImportError as exc:  # pragma: no cover
         "provide your own client implementation."
     ) from exc
 
-# ---------------------------------------------------------------------------
-# Config
-# ---------------------------------------------------------------------------
 
-_ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY")
-if not _ANTHROPIC_API_KEY:
-    raise EnvironmentError(
-        "ANTHROPIC_API_KEY environment variable not set. Export your key "
-        "before calling claude_api.send()."
-    )
-
-_client = anthropic.Anthropic(api_key=_ANTHROPIC_API_KEY)
 
 # ---------------------------------------------------------------------------
 # Public helper
@@ -64,7 +53,19 @@ def send(payload: Dict[str, Any]) -> Dict[str, Any]:
         ``{"completion": text, "raw_response": response_dict}``
         where *text* is the assistant's first text block.
     """
+# ---------------------------------------------------------------------------
+# Config
+# ---------------------------------------------------------------------------
 
+    _ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY")
+    if not _ANTHROPIC_API_KEY:
+        raise EnvironmentError(
+            "ANTHROPIC_API_KEY environment variable not set. Export your key "
+            "before calling claude_api.send()."
+        )
+
+    _client = anthropic.Anthropic(api_key=_ANTHROPIC_API_KEY)
+    
     # --- 1. Fire request ---------------------------------------------------
     response = _client.messages.create(**payload)  # type: ignore[arg-type]
 

@@ -60,7 +60,7 @@ def build_policy_condense_prompt(source_id: str) -> tuple[list[dict], list[dict]
             "You are an institutional-policy processer.\n"
             "Extract enforceable RULES, thresholds, and ambiguous-enforcement language "
             "from the following document. You do not change any meaning of any section, and if "
-            "space allows, you extract relevant policy sections verbatim."
+            "space allows, you extract relevant policy sections verbatim. "
             "Output a clean, section-based summary that "
             "contains a table of contents, section titles, and "
             "retains original clause numbering where available."
