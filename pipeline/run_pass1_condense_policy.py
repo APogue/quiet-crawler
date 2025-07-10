@@ -71,7 +71,7 @@ def _parse_args() -> argparse.Namespace:  # pragma: no cover
 
 def main() -> None:  # pragma: no cover
     args = _parse_args()
-    print(f"[DEBUG] args.dry_run = {args.dry_run}")  # ← insert here
+    
     # 1️⃣  Build Claude payload ------------------------------------------------
     system, messages = preprocess_payload.build_policy_condense_prompt(args.source_id)
     payload: dict = {

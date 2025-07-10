@@ -20,6 +20,7 @@ from __future__ import annotations
 
 import os
 from typing import Any, Dict
+from dotenv import load_dotenv
 
 try:
     import anthropic  # Official Anthropic SDK (pip install anthropic)
@@ -56,27 +57,40 @@ def send(payload: Dict[str, Any]) -> Dict[str, Any]:
 # ---------------------------------------------------------------------------
 # Config
 # ---------------------------------------------------------------------------
-
-    _ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY")
-    if not _ANTHROPIC_API_KEY:
+    load_dotenv()
+    api_key = os.getenv("ANTHROPIC_API_KEY")
+    if not api_key:
         raise EnvironmentError(
             "ANTHROPIC_API_KEY environment variable not set. Export your key "
             "before calling claude_api.send()."
         )
 
-    _client = anthropic.Anthropic(api_key=_ANTHROPIC_API_KEY)
-    
-    # --- 1. Fire request ---------------------------------------------------
-    response = _client.messages.create(**payload)  # type: ignore[arg-type]
+    client = anthropic.Anthropic(api_key=api_key)
 
-    # --- 2. Extract assistant text ----------------------------------------
-    # Anthropic response structure:
-    # {
-    #   "id": "...",
-    #   "role": "assistant",
-    #   "content": [ {"type": "text", "text": "..."} ],
-    #   ...
-    # }
+    # --- 1. Clean payload for Claude API (remove custom metadata) ---
+    api_payload = {k: v for k, v in payload.items() if k != "metadata"}
+
+    # --- 2. Fire request ---
+    response = client.messages.create(**api_payload)  # type: ignore[arg-type]
+
+    # --- 3. Extract assistant text ----------------------------------------
+# Claude API response structure:
+# {
+#   "id": "msg_...",
+#   "type": "message",
+#   "role": "assistant",
+#   "model": "claude-3-opus-20240229",
+#   "content": [
+#       { "type": "text", "text": "Claude's reply here..." }
+#   ],
+#   "usage": {
+#       "input_tokens": 1234,
+#       "output_tokens": 567
+#   },
+#   "stop_reason": "end_turn",
+#   "stop_sequence": null
+# }
+
     try:
         first_block = response.content[0]
         if first_block.type != "text":  # pragma: no cover

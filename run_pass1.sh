@@ -13,4 +13,4 @@
 python -m pipeline.run_pass1_condense_policy \
   --incident-id INC-001 \
   --source-id PHIL-001 \
-  --dry-run
+  #--dry-run

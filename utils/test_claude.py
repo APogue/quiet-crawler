@@ -65,7 +65,6 @@ def send_prompt(payload: Dict[str, Any], *, dry_run: bool = False) -> tuple[str 
     str | None
         Claude's `completion` string, or None if dry_run=True
     """
-    print(f"[DEBUG] dry_run in send_prompt = {dry_run}")  # ← insert here
     run_name = generate_run_name(payload)
     logger.log_payload(run_name, payload)
 
@@ -74,7 +73,8 @@ def send_prompt(payload: Dict[str, Any], *, dry_run: bool = False) -> tuple[str 
 
     try:
         result: Dict[str, Any] = claude_api.send(payload)
-        output_text = result.get("completion", json.dumps(result, indent=2))
+        output_text = result.get("completion") or str(result)
+
     except Exception:
         tb = traceback.format_exc()
         logger.log_response(run_name, f"[ERROR]\n{tb}", payload=payload)

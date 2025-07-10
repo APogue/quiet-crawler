@@ -42,57 +42,52 @@ _DEFAULT_SYSTEM_FILES: List[Path] = [
 # ---------------------------------------------------------------------------
 
 
-def build_policy_condense_prompt(source_id: str) -> tuple[list[dict], list[dict]]:
-    """
-    Craft a minimal messages array for Claude that asks it to extract rule
-    structure from a *single* policy / guidance document (POL- or PHIL-).
+def build_policy_condense_prompt(source_id: str) -> tuple[str, list[dict]]:
+   """
+   Craft a minimal messages array for Claude that asks it to extract rule
+   structure from a *single* policy / guidance document (POL- or PHIL-).
 
-    Returns
-    -------
-    Tuple[List[Dict], List[Dict]]
-         A system message block and user message array, suitable for Claude API payload.
-    """
-    policy_text = load_source_content(source_id)
+   Returns
+   -------
+   Tuple[str, List[Dict]]
+        A system message string and user message array, suitable for Claude API payload.
+   """
+   policy_text = load_source_content(source_id)
 
-    role_block = {
-        "type": "text",
-        "text": (
-            "You are an institutional-policy processer.\n"
-            "Extract enforceable RULES, thresholds, and ambiguous-enforcement language "
-            "from the following document. You do not change any meaning of any section, and if "
-            "space allows, you extract relevant policy sections verbatim. "
-            "Output a clean, section-based summary that "
-            "contains a table of contents, section titles, and "
-            "retains original clause numbering where available."
-        ),
-    }
-    system_docs = {
-            "type": "document",
-            "source": {
-                "type": "text",
-                "media_type": "text/plain",
-                "data": policy_text
-            },
-            "title": source_id
-        }
-    system_parts: list[dict] = [role_block, system_docs]
-    messages =  [
-        {
-            "role": "user",
-            "content": (
-                "Extract sections from ALL provided documents that relate to:\n\n"
-                "- Visual displays, effigies, sculptures, or symbolic objects\n"
-                "- Demonstrations or protests at University events\n"
-                "- Religious, ethnic, or national origin content\n"
-                "- Prior approval requirements for displays\n"
-                "- Expression and speech of any kind\n"
-                "- Time, place, and manner regulations\n"
-                "Do NOT determine whether conduct is protected or prohibited. Do NOT skip content. Extract from ALL content, even if sections seem contradictory. Include complete text of each relevant section. When in doubt, include rather than exclude."
-            ),
-        }
-    ]
+   system_message = (
+       f"You are an institutional-policy processor. "
+       f"Here is a policy document you will extract information from:\n\n"
+       f"<document id=\"{source_id}\">\n{policy_text}\n</document>\n\n"
+       f"Extract enforceable RULES, thresholds, and ambiguous-enforcement language "
+       f"from this document. You do not change any meaning of any section, and if "
+       f"space allows, you extract relevant policy sections verbatim. "
+       f"Output a clean, section-based summary that "
+       f"contains a table of contents, section titles, and "
+       f"retains original clause numbering where available."
+   )
 
-    return system_parts, messages
+   messages = [
+       {
+           "role": "user",
+           "content": [
+               {
+                   "type": "text", 
+                   "text": (
+                       f"Extract sections from the provided document ({source_id}) that relate to:\n\n"
+                       "- Visual displays, effigies, sculptures, or symbolic objects\n"
+                       "- Demonstrations or protests at University events\n"
+                       "- Religious, ethnic, or national origin content\n"
+                       "- Prior approval requirements for displays\n"
+                       "- Expression and speech of any kind\n"
+                       "- Time, place, and manner regulations\n"
+                       "Do NOT determine whether conduct is protected or prohibited. Do NOT skip content. Extract from ALL content, even if sections seem contradictory. Include complete text of each relevant section. When in doubt, include rather than exclude."
+                   )
+               }
+           ]
+       }
+   ]
+
+   return system_message, messages
 # ---------------------------------------------------------------------------
 # Pass 2 : incident coding
 # ---------------------------------------------------------------------------
